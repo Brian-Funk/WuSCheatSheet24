@@ -1,0 +1,154 @@
+
+
+
+\mysection[col6]{\centering Gemeinsame Verteilungen}
+\SA{5.3. }{
+ Eine gemeinsame Verteilung von Zufallsvariablen $X_{1}, \ldots, X_{n}$ erfüllt stets $$
+ \sum_{x_{1} \in W_{1}, \ldots, x_{n} \in W_{n}} p\left(x_{1}, \ldots, x_{n}\right)=1
+ $$}
+ 
+\PROP{5.5}{ 
+Aus der gemeinsamen Gewichtsfunktion $p$ bekommt man die gemeinsame Verteilungsfunktion via
+ 
+ $$
+ \begin{aligned}
+ F\left(x_{1}, \ldots, x_{n}\right) & =\mathbb{P}\left[X_{1} \leq x_{1}, \ldots, X_{n} \leq x_{n}\right] \\
+ & =\sum_{y_{1} \leq x_{1}, \ldots, y_{n} \leq x_{n}} \mathbb{P}\left[x_{1}=y_{1}, \ldots, X_{n}=y_{n}\right] \\
+ & =\sum_{y_{1} \leq x_{1}, \ldots, y_{n} \leq x_{n}} p\left(y_{1}, \ldots, y_{n}\right) .
+ \end{aligned}
+$$
+}
+
+\DEF{5.18. (Randverteilung) }{
+  Haben $X$ und $Y$ die gemeinsame Verteilungsfunktion $F$, so ist die Funktion $F_{X}: \mathbb{R} \rightarrow[0,1]$, gegeben durch
+ 
+ $$
+ x \mapsto F_{X}(x)=\mathbb{P}[X \leq x]=\mathbb{P}[X \leq x, Y<\infty]=\lim _{y \rightarrow \infty} F(x, y)
+ $$
+ 
+ die Verteilungsfunktion der Randverteilung von $X$. Analog ist
+ 
+ $$
+ F_{Y}: \mathbb{R} \rightarrow[0,1]
+ $$
+ 
+ $$
+ y \mapsto F_{Y}(y)=\mathbb{P}[Y \leq y]=\mathbb{P}[X<\infty, Y \leq y]=\lim _{x \rightarrow \infty} F(x, y)
+ $$
+ die Verteilungsfunktion der Randverteilung von $Y$.}
+ 
+
+\mysubsection{\centering Diskret}
+
+\DEF{5.1. (Gemeinsame diskrete Verteilung) }{
+ Seien $X_{1}, \ldots, X_{n}$ diskrete Zufallsvariablen, seien für $k \in\{1, \ldots, n\}$ Mengen $W_{k} \subset \mathbb{R}$ endlich oder abzählbar, sodass $X_{k} \in W_{k}$ fast sicher gilt.
+Die gemeinsame Verteilung von $\left(X_{1}, \ldots, X_{n}\right)$ ist eine Familie von Wahrscheinlichkeiten
+ 
+ $$
+ \left\{p\left(x_{1}, \ldots, x_{n}\right)\right\}_{x_{1} \in W_{1}, \ldots, x_{n} \in W_{n}}
+ $$
+ 
+ wobei $p: \mathbb{R}^{n} \rightarrow[0,1]$ die gemeinsame Gewichtsfunktion  bezeichnet,
+ 
+ $$
+ p\left(x_{1}, \ldots, x_{n}\right)=\mathbb{P}\left[X_{1}=x_{1}, \ldots, X_{n}=x_{n}\right]
+ $$}
+ 
+ \SA{5.6. (Verteilung des Bildes) }{
+  Sei $n \geq 1$ und sei $\varphi: \mathbb{R}^{n} \rightarrow \mathbb{R}$ eine Abbildung. Seien $X_{1}, \ldots, X_{n}$ diskrete Zufallsvariablen, mit Werten jeweils in $W_{1}, \ldots, W_{n}$ (f.s.). Dann ist $Z=\varphi\left(X_{1}, \ldots, X_{n}\right)$ eine diskrete Zufallsvariable, die f.s. Werte in $W=\varphi\left(W_{1} \times \ldots \times W_{n}\right)$ annimmt. Zudem ist die Verteilung von $Z$ für alle $z \in W$ gegeben durch
+ 
+ $$
+ \mathbb{P}[Z=z]=\sum_{\substack{x_{1} \in W_{1}, \ldots, x_{n} \in W_{n} \\ \varphi\left(x_{1}, \ldots, x_{n}\right)=z}} \mathbb{P}\left[X_{1}=x_{1}, \ldots, X_{n}=x_{n}\right]
+ $$}
+
+ \SA{5.7. (Randverteilung)}{
+ Seien $X_{1}, \ldots, X_{n}$ diskrete Zufallsvariablen mit gemeinsamer Gewichtsfunktion $p$. Für jedes $k \in\{1, \ldots, n\}$ und jedes $x \in W_{k}$ gilt$$
+ \mathbb{P}\left[X_{k}=x\right]=\sum_{\substack{x_{\ell} \in W_{\ell} \\ \ell \in\{1, \ldots, n\} \backslash\{k\}}} p\left(x_{1}, \ldots, x_{k-1}, x, x_{k+1}, \ldots, x_{n}\right)
+ $$}
+ 
+ \SA{5.9. (Erwartungswert des Bildes)}{
+  Seien $X_{1}, \ldots, X_{n}$ diskrete Zufallsvariablen mit gemeinsamer Verteilung $\left\{p\left(x_{1}, \ldots, x_{n}\right)\right\}_{x_{1} \in W_{1}, \ldots, x_{n} \in W_{n}}$ und sei $\varphi: \mathbb{R}^{n} \rightarrow \mathbb{R}$ eine Abbildung. Es gilt $$
+ \mathbb{E}\left[\varphi\left(X_{1}, \ldots, X_{n}\right)\right]=\sum_{x_{1}, \ldots, x_{n}} \varphi\left(x_{1}, \ldots, x_{n}\right) p\left(x_{1}, \ldots, x_{n}\right)
+ $$
+ solange die Summe wohldefiniert ist, wobei wir hier über alle $x_{1} \in W_{1}, \ldots, x_{n} \in W_{n}$ summieren.}
+ 
+  \SA{ 5.10. }{
+ Seien $X_{1}, \ldots, X_{n}$ diskrete Zufallsvariablen mit gemeinsamer
+ Verteilung $\left\{p\left(x_{1}, \ldots, x_{n}\right)\right\}_{x_{1} \in W_{1}, \ldots, x_{n} \in W_{n}}$.
+ Die folgenden Aussagen sind äquivalent
+ \begin{enumerate}[leftmargin=*]
+  \item $X_{1}, \ldots, X_{n}$ sind unabhängig,
+ \item für alle $x_{1} \in W_{1}, \ldots, x_{n} \in W_{n}$ gilt
+ 
+  \end{enumerate}
+ $$
+ p\left(x_{1}, \ldots, x_{n}\right)=\mathbb{P}\left[X_{1}=x_{1}\right] \cdot \ldots \cdot \mathbb{P}\left[X_{n}=x_{n}\right]
+ $$
+ 
+ d.h. die gemeinsame Gewichtsfunktion ist das Produkt der einzelnen Gewichtsfunktionen der Randverteilungen.}
+ 
+
+ 
+ 
+
+\mysubsection{\centering Stetig}
+
+ 
+ 
+ \DEF{5.11. (Gemeinsame stetige Verteilung) }{
+  Sei $n \geq 1$. Wir sagen, dass die Zufallsvariablen $X_{1}, \ldots, X_{n}: \Omega \rightarrow \mathbb{R}$ eine stetige gemeinsame Verteilung besitzen, falls eine Abbildung $f: \mathbb{R}^{n} \rightarrow \mathbb{R}_{+}$existiert, sodass für alle $a_{1}, \ldots, a_{n} \in \mathbb{R}$ gilt,$
+ \mathbb{P}\left[X_{1} \leq a_{1}, \ldots, X_{n} \leq a_{n}\right]=\int_{-\infty}^{a_{1}} \cdots \int_{-\infty}^{a_{n}} f\left(x_{1}, \ldots, x_{n}\right) \mathrm{d} x_{n} \cdots \mathrm{d} x_{1}
+ $
+ 
+ Die Funktion $f$ heisst die gemeinsame Dichte von $\left(X_{1}, \ldots, X_{n}\right)$ (joint probability density function).}
+ 
+ 
+ 
+ \SA{5.12.}{
+  Sei $f$ die gemeinsame Dichte der Zufallsvariablen $\left(X_{1}, \ldots, X_{n}\right)$. Dann gilt
+ 
+ $$
+ \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f\left(x_{1}, \ldots, x_{n}\right) \mathrm{d} x_{n} \cdots \mathrm{d} x_{1}=1 \tag{5.2}
+ $$
+ Umgekehrt kann jeder Funktion $f: \mathbb{R}^{n} \rightarrow \mathbb{R}_{+}$, die Gleichung oben erfüllt, ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{F}, \mathbb{P})$ und $n$ Zufallsvariablen $X_{1}, \ldots, X_{n}$ zugeordnet werden, sodass $f$ die gemeinsame Dichte von $X_{1}, \ldots, X_{n}$ ist.}
+ 
+  \SA{5.15. (Erwartungswert des Bildes)}{
+Sei $\varphi: \mathbb{R}^{n} \rightarrow \mathbb{R}$ eine Abbildung. Falls $X_{1}, \ldots, X_{n}$ eine gemeinsame Dichte $f$ besitzen, dann lässt sich der Erwartungswert der Zufallsvariable $\varphi\left(X_{1}, \ldots, X_{n}\right)$ berechnen als
+ $
+ \mathbb{E}\left[\varphi\left(X_{1}, \ldots, X_{n}\right)\right]=\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} \varphi\left(x_{1}, \ldots, x_{n}\right) f\left(x_{1}, \ldots, x_{n}\right) \mathrm{d} x_{n} \cdots \mathrm{d} x_{1}
+ $}
+ 
+ 
+  \SA{5.21. (Unabhängigkeit von stetigen Zufallsvariablen)}{
+   Seien $X_{1}, \ldots, X_{n}$ Zufallsvariablen mit Dichten $f_{X_{1}}, \ldots, f_{X_{n}}$. Dann sind die folgenden Aussagen äquivalent,
+   \begin{enumerate}
+   
+
+ \item $X_{1}, \ldots, X_{n}$ sind unabhängig,
+ \item $X_{1}, \ldots, X_{n}$ sind gemeinsam stetig mit gemeinsamer Dichte $f: \mathbb{R}^{n} \rightarrow \mathbb{R}_{+}$,
+    \end{enumerate}
+ $$
+f\left(x_{1}, \ldots, x_{n}\right)=f_{X_{1}}\left(x_{1}\right) \cdot \ldots \cdot f_{X_{n}}\left(x_{n}\right)
+ $$
+ d.h. die gemeinsame Dichtefunktion $f$ ist das Produkt der einzelnen Randdichten $f_{X_{k}}$.}
+
+\NOTE{Randdichten}{
+ 
+ Haben $X$ und $Y$ eine gemeinsame Dichte $f(x, y)$, so haben auch die Randverteilungen von $X$ und $Y$ Dichten $f_{X}: \mathbb{R} \rightarrow \mathbb{R}_{+}$bzw. $f_{Y}: \mathbb{R} \rightarrow \mathbb{R}_{+}$.
+$
+f_{X}(x)=\int_{-\infty}^{\infty} f(x, y) \mathrm{d} y \quad \text { und } \quad f_{Y}(y)=\int_{-\infty}^{\infty} f(x, y) \mathrm{d} x
+$
+Falls bei Verteilungen die Variablen eine Bedingung erfüllen müssen z.b $x^2 + y^2 \le 1$, dann bekommt man die Grenzen des Integrals durch das umformen der jeweiligen Variabel. Z.b. Um $f_X(x)$ zu erhalten (nach $y$ integrieren): 
+$y^2 \leq 1 - x^2 \Rightarrow y = \pm \sqrt{1-x^2} $
+ Obere Grenze $+\sqrt{1-x^2}$
+ Untere Grenze  $-\sqrt{1-x^2}$
+ Falls Grenzen nicht beschränkt sind einfach nach $\infty$ integrieren z.b. mit $0<x<y$ gilt $f_Y = \int_{x}^{\infty}f_{X,Y}(x,y)dy$
+ 
+ }
+ 
+
+
+
+
+
+

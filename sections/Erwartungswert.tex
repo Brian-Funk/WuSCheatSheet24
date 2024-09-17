@@ -1,0 +1,160 @@
+
+
+
+\mysection[col4]{\centering Erwartungswert}
+
+
+
+\DEF{ 4.1. (Erwartungswert (nicht-negativ)) }{
+Sei $X: \Omega \rightarrow \mathbb{R}_{+}$eine Zufallsvariable mit nicht-negativen Werten und Verteilungsfunktion $F_{X}$. Dann heisst
+$$ 
+ \mathbb{E}[X]=\int_{0}^{\infty}\left(1-F_{X}(x)\right) \mathrm{d} x \tag{4.1}
+$$
+ 
+
+der Erwartungswert von $X$ (expected value).}
+
+\SA{4.3.}{
+Sei $X$ eine nicht-negative Zufallsvariable. Dann gilt $\mathbb{E}[X] \geq 0$. Gleichheit gilt genau dann wenn $X=0$ fast sicher gilt.}
+
+
+
+\DEF{4.4. (Allgemeiner Erwartungswert)}{
+Sei $X$ eine reellwertige Zufallsvariable. Falls $\mathbb{E}[|X|]<\infty$, dann heisst
+  $$
+ \mathbb{E}[X]=\mathbb{E}\left[X_{+}\right]-\mathbb{E}\left[X_{-}\right] \tag{4.2}
+ $$
+ der Erwartungswert von $X$.}
+
+
+\mysubsection{\centering Diskret}
+
+ \SA{4.8 (Erwartungswert (diskret)) }{
+ Sei $X: \Omega \rightarrow \mathbb{R}$ eine diskrete Zufallsvariable, deren Werte fast sicher in $W$ (endlich oder abzählbar) liegen. Dann gilt
+ 
+ $$
+ \mathbb{E}[X]=\sum_{x \in W} x \cdot \mathbb{P}[X=x]=\sum_{x \in W} x p_{X}(x)
+ $$
+solange der Erwartungswert wohldefiniert ist.
+Somit gilt auch
+
+$$\mathbb{E}[a+b\cdot X^{c}]=a  + \sum\limits_{x\in W}b \cdot x^{c} p_{X}(x)$$}
+
+
+\mysubsection{\centering Stetig}
+
+\SA{4.17. (Erwartungswert (stetig))  }{ 
+  Sei $X$ eine stetige Zufallsvariable mit Dichte $f_{X}$. Dann gilt
+
+ $$
+ \mathbb{E}[X]=\int_{-\infty}^{\infty} x f_{X}(x) \mathrm{d} x 
+ $$
+solange das Integral absolut konvergiert, d.h. falls $\int_{-\infty}^{\infty}|x| f_{X}(x) \mathrm{d} x<\infty$. Ist das Integral nicht absolut konvergent, so existiert der Erwartungswert nicht (zumindest nicht in $\mathbb{R}$ ). Das ist völlig analog zum diskreten Fall.
+Es gilt ebenfalls
+$$
+\mathbb{E}\left[a+b \cdot X^c\right]=a+\int_{-\infty}^{\infty} b \cdot x^c \cdot f_X(x) d x
+$$}
+
+
+
+\mysubsection{\centering Eigenschaften}
+
+
+
+\SA{4.18.}{
+Sei $X$ eine stetige Zufallsvariable mit Dichte $f_{X}$ und sei $\varphi: \mathbb{R} \rightarrow \mathbb{R}$ eine Abbildung. Dann gilt
+ 
+ $$
+ \mathbb{E}[\varphi(X)]=\int_{-\infty}^{\infty} \varphi(x) f_{X}(x) \mathrm{d} x
+ $$
+solange das Integral wohldefiniert ist.}
+
+
+
+
+
+
+
+
+ 
+ \SA{4.25. (Linearität des Erwartungswerts)}{ 
+ Seien $X, Y: \Omega \rightarrow \mathbb{R}$ Zufallsvariablen und sei $\lambda \in \mathbb{R}$. Falls die Erwartungswerte wohldefiniert sind, gilt
+ \begin{enumerate}[leftmargin=*]
+ \item  $\mathbb{E}[\lambda X]=\lambda \mathbb{E}[X]$
+ \item $\mathbb{E}[X+Y]=\mathbb{E}[X]+\mathbb{E}[Y]$.
+  \end{enumerate}
+}
+
+\SA{ 4.29. (Monotonie des Erwartungswerts) }{
+ Seien $X, Y$ zwei Zufallsvariablen, sodass $X \leq Y$ f.s. gilt. Falls beide Erwartungswerte wohldefiniert sind, gilt
+ $$
+ \mathbb{E}[X] \leq \mathbb{E}[Y]
+ $$}
+ 
+ 
+
+
+\mysubsection{\centering Unabhängigkeit}
+
+ \SA{4.30 (Erwartungswerte bei Unabhängigkeit)}{für $n$ unabhängige Zufallsvariablen $X_{1}, \ldots, X_{n}$. Satz 4.31. Seien $X_{1}, \ldots, X_{n}$ unabhängige Zufallsvariablen mit endlichen Erwartungswerten $\mathbb{E}\left[X_{1}\right], \ldots, \mathbb{E}\left[X_{n}\right]$. Dann gilt
+ $$
+ \mathbb{E}\left[\prod_{k=1}^{n} X_{k}\right]=\prod_{k=1}^{n} \mathbb{E}\left[X_{k}\right]
+ $$}
+ 
+
+ 
+ 
+
+ 
+ 
+ \SA{4.32.}{
+Sei $X$ eine Zufallsvariable und sei $f: \mathbb{R} \rightarrow \mathbb{R}_{+}$eine Abbildung, sodass $\int_{-\infty}^{\infty} f(x) \mathrm{d} x=1$. Dann sind folgende Aussagen äquivalent
+\begin{enumerate}[leftmargin=*]
+\item  $X$ ist stetig mit Dichte $f$,
+\item für jede stückweise stetige, beschränkte  Abbildung $\varphi: \mathbb{R} \rightarrow \mathbb{R}$ gilt
+ \end{enumerate}
+$$
+ \mathbb{E}[\varphi(X)]=\int_{-\infty}^{\infty} \varphi(x) f(x) \mathrm{d} x
+ $$}
+
+\SA{4.33.}{
+ Seien $X, Y$ zwei Zufallsvariablen. Die folgenden Aussagen sind äquivalent:
+ \begin{enumerate}[leftmargin=*]
+ \item  $X, Y$ sind unabhängig,
+ \item Für alle stückweise stetigen, beschränkten Abbildungen $\varphi, \psi: \mathbb{R} \rightarrow \mathbb{R}$ gilt
+  \end{enumerate}
+ $$
+ \mathbb{E}[\varphi(X) \psi(Y)]=\mathbb{E}[\varphi(X)] \mathbb{E}[\psi(Y)]
+ $$}
+ 
+ 
+ \SA{4.34.  }{
+ Seien $X_{1}, \ldots, X_{n}$ Zufallsvariablen. Die folgenden Aussagen sind äquivalent:
+ \begin{enumerate}[leftmargin=*]
+ \item  $X_{1}, \ldots, X_{n}$ sind unabhängig,
+ \item Für alle stückweise stetigen, beschränkten Abbildungen
+ $\varphi_{1}, \ldots, \varphi_{n}: \mathbb{R} \rightarrow \mathbb{R}$ gilt
+   \end{enumerate}
+    $\mathbb{E}\left[\varphi_{1}\left(X_{1}\right) \cdot \ldots \cdot \varphi_{n}\left(X_{n}\right)\right]=\mathbb{E}\left[\varphi_{1}\left(X_{1}\right)\right] \cdot \ldots \cdot \mathbb{E}\left[\varphi_{n}\left(X_{n}\right)\right]$.} 
+
+
+\mysubsection{\centering Ungleichungen}
+
+\SA{4.35. (Markow-Ungleichung) }{
+Sei $X$ eine nicht-negative Zufallsvariable und sei $g: X(\Omega) \rightarrow[0, \infty)$ eine wachsende Funktion. Für jedes $c \in \mathbb{R}$ mit $g(c)>0$ gilt
+$$
+ \mathbb{P}[X \geq c] \leq \frac{\mathbb{E}[g(X)]}{g(c)} 
+
+ $$}
+ 
+ \SA{4.36. (Jensensche Ungleichung) }{
+  Sei $X$ eine Zufallsvariable und sei $\varphi: \mathbb{R} \rightarrow \mathbb{R}$ eine konvexe Funktion. Falls $\mathbb{E}[\varphi(X)]$ und $\mathbb{E}[X]$ wohldefiniert sind, gilt
+ $$
+ \varphi(\mathbb{E}[X]) \leq \mathbb{E}[\varphi(X)] 
+ $$}
+
+\COR{4.37. (Dreiecksungleichung) }{
+ Anwendung der Jensenschen Ungleichung auf $\varphi(x)=|x|$ liefert die Dreiecksungleichung,
+ $$
+ |\mathbb{E}[X]| \leq \mathbb{E}[|X|]
+ $$} 

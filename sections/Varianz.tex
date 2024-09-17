@@ -1,0 +1,120 @@
+
+
+
+\mysection[col5]{\centering Varianz}
+
+
+\DEF{4.38. (Varianz & Standardabweichung)}{
+  Sei $X$ eine Zufallsvariable, sodass $\mathbb{E}\left[X^{2}\right]<\infty$. Wir definieren die Varianz von $X$ (variance) durch
+ $$
+ \mathbb{V}[X]=\mathbb{E}\left[(X-\mathbb{E}[X])^{2}\right] = \mathbb{E}[X^{2}]\right]-\mathbb{E}[X]\right]^{2}
+ $$
+ 
+ Die Wurzel der Varianz nennt man Standardabweichung von $X$ (standard deviation) und sie wird oft mit $\sigma=\sigma_{X}=\sigma(X)=\sqrt{\mathbb{V}[X]}$ bezeichnet.}
+
+\mysubsection{\centering Eigenschaften}
+
+
+ \PROP{4.46. }{
+ 
+Seien $X_{1}, \ldots,, X_{n}$ paarweise unabhängigen Zufallsvariablen, dann gilt
+ $$
+ \mathbb{V}\left[\sum_{k=1}^{n} X_{k}\right]=\sum_{k=1}^{n} \mathbb{V}\left[X_{k}\right]
+ $$}
+
+\NOTE{}{
+\begin{enumerate}[leftmargin=*]
+    \item Sei $X$ ein ZV, sodass $\E(X^2)<\infty$ und $a, b \in \R$:
+    $$\mathbb{V}(a\cdot X + b) = a^2 \cdot \mathbb{V}(X)$$
+    \item Seien $X_1, ..., X_n$ paarweise unabhängig. Dann gilt
+    $$\mathbb{V}(X_1 + \ldots + X_n) = \mathbb{V}(X_1)+\ldots +\mathbb{V}(X_n)$$
+\end{enumerate}
+} 
+
+\COR{4.50. (Chebyshev-Ungleichung)}{   
+   Sei $Y$ eine Zufallsvariable mit endlicher Varianz. Für jedes $c>0$ gilt dann $$\mathbb{P}[|Y - \mathbb{E}[Y]| \geq c] \leq \frac{\mathbb{V}[Y]}{c^{2}}$$}
+ \NOTE{}{
+ \begin{enumerate}[leftmargin=*]
+    \item $\text{Cov}(X,X) = \mathbb{V}(X)$
+    \item $X, Y$ unabhängig $\implies$ $\text{Cov}(X, Y) = 0$ (\textcolor{red}{Die Umkehrung ist falsch!})
+    \item $\mathbb{V}(X+Y) = \mathbb{V}(X) + \mathbb{V}(Y) + 2\text{Cov}(X, Y)$
+    \item $\mathbb{V}(X)\geq 0$
+\end{enumerate}
+  }
+\mysubsection{\centering Kovarianz}
+
+ 
+ \DEF{4.51. (Kovarianz)}{
+ Seien $X, Y$ zwei Zufallsvariablen mit endlichen zweiten Momenten, $\mathbb{E}\left[X^{2}\right], \mathbb{E}\left[Y^{2}\right]<\infty$. Die Kovarianz zwischen $X$ und $Y$ (covariance) ist definiert als
+ $$
+ \operatorname{cov}(X, Y)=\mathbb{E}[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])]
+ $$}
+ 
+ \NOTE{Kovarianz}{
+ Man kann die Kovarianz ebenfalls ausdrücken durch
+ 
+ $$
+\operatorname{cov}(X, Y)=\mathbb{E}[X Y]-\mathbb{E}[X] \mathbb{E}[Y]
+$$	
+ 
+Beweis:
+\begin{align*} 
+ &\operatorname{cov}(X,Y) \\
+ &= \mathbb{E}[(X- \mathbb{E}[X])(Y- \mathbb{E}[Y])] \\
+&= \mathbb{E}[(XY- \mathbb{E}[X]Y - \mathbb{E}[Y]X + \mathbb{E}[X]\mathbb{E}[Y]] \\
+& \overset{\underset{\mathrm{4.25}}{}}{=} \mathbb{E}[XY] - \mathbb{E}[\mathbb{E}[X]Y] -\mathbb{E}[\mathbb{E}[Y]X]  + \mathbb{E}[ \mathbb{E}[X]\mathbb{E}[Y]]  \\
+& \overset{\underset{\mathrm{(I)}}{}}{=} \mathbb{E}[XY] -  \mathbb{E}[X]\mathbb{E}[Y] - \mathbb{E}[X]\mathbb{E}[Y] + \mathbb{E}[X]\mathbb{E}[Y] \\
+&=\mathbb{E}[XY] -  \mathbb{E}[X]\mathbb{E}[Y]
+ \end{align*} 
+ 
+ 
+ }
+ 
+ \NOTE{Kolleriertheit}{
+ Es gilt:
+\begin{itemize}[leftmargin=*]
+\item Wenn $\operatorname{cov}(X, Y)>0$, dann sind $X$ und $Y$ positiv korreliert.
+\item wenn $\operatorname{cov}(X, Y)=0$, dann sind $X$ und $Y$ unkorreliert.
+\item Wenn $\operatorname{cov}(X, Y)<0$, dann sind $X$ und $Y$ negativ korreliert oder antikorreliert.
+ \end{itemize}
+ }
+ 
+ \NOTE{Eigenschaften}{
+ Für die Kovarianz gilt:
+ \begin{enumerate}[leftmargin=*]
+ \item Positive Semidefinitheit: $\operatorname{cov}(X, X) \geq 0$,
+\item Symmetrie: $\operatorname{cov}(X, Y)=\operatorname{cov}(Y, X)$
+\item Bilinearität: $\operatorname{cov}(a X+b, c Y+d)=a c \operatorname{cov}(X, Y)$ und $\operatorname{cov}(X,(e Y+f)+(g Z+h))=e \operatorname{cov}(X, Y)+g \operatorname{cov}(X, Z)$.
+ \end{enumerate}
+
+
+ }
+ \PRF{}{
+
+ \begin{enumerate}[leftmargin=*]
+ \item \begin{align*} \operatorname{cov}(X,X) & \overset{\underset{\mathrm{4.52}}{}}{=} \mathbb{E}[XX] - \mathbb{E}[X]\mathbb{E}[X]  \\
+&= \mathbb{E}[X^{2}] - \mathbb{E}[X]^{2} \\
+& \overset{\underset{\mathrm{4.40}}{}}{=} \mathbb{V}[X]
+ \end{align*}
+\item \begin{align} \operatorname{cov}(X,Y) & \overset{\underset{\mathrm{4.52}}{}}{=} \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y] \\
+&=  \mathbb{E}[YX] - \mathbb{E}[Y]\mathbb{E}[X]  \\
+ & \overset{\underset{\mathrm{4.52}}{}}{=} \operatorname{cov}(Y,X) 
+\end{align*}
+\item 
+ \end{enumerate}
+
+ }
+
+
+\mysubsection{\centering Zusammengesetzte}
+\NOTE{Verteilung einer Ungleichung}{
+Es gilt für beliebige ZV $X,Y$:
+$$
+\mathbb{P}[X>Y]=\int_{-\infty}^{\infty} \mathbb{P}[X>y] \cdot f_Y(y) \mathrm{d} y
+$$
+
+}
+
+
+
+

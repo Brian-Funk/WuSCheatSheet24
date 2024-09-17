@@ -1,0 +1,141 @@
+\documentclass[7pt,landscape, margin = 0.1mm]{article}
+\usepackage{amssymb,amsmath,amsthm,amsfonts}
+\usepackage{multicol,multirow}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{calc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ifthen}
+\usepackage{titlesec}
+\usepackage[landscape]{geometry}
+\usepackage{enumitem}
+\usepackage{syntonly}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=blue]{hyperref}
+\usepackage{tikz}
+\def\cm{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.1in,left=.1in,right=.1in,bottom=.1in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1mm,left=1mm,right=1mm,bottom=1mm} }
+		{\geometry{top=1mm,left=1mm,right=1mm,bottom=1mm} }
+	}
+
+\pagestyle{empty}
+
+\makeatletter
+
+ 
+
+\newcommand{\nextcol}{\vfill\null\columnbreak}
+
+\newcommand{\titellinie}{\rule{1.\linewidth}{0.75pt}}
+
+\titleformat{\subsection}
+  {\normalfont\fontsize{10}{10}\bfseries}{\thesection}{1em}{}
+
+\newcommand*{\mysection}[2][black]{\vskip 0pt \titellinie\vspace{-20pt}\section{#2}\vspace{-14pt}\titellinie \colorlet{chaptercolor}{#1}}
+
+\newcommand*{\mysubsection}[1]{\vspace{-2mm}\color{chaptercolor}\subsection{ #1 }
+\vspace{-1mm}\hrule\vspace{1.5mm}\color{black}
+\vspace{2mm}}
+
+\newcommand{\COL}[1]{ \color{chaptercolor} \bf{#1}\color{black}     \\}
+
+\newcommand{\PRF}[2]{\color{chaptercolor}\bf{Proof #1}:\color{black}    \hspace{0.2cm} \tiny #2  \scriptsize \\}
+
+\newcommand{\EX}[2]{\color{chaptercolor}\bf{Ex #1}:\color{black}    \hspace{0.2cm} \tiny #2  \scriptsize \\}
+
+\newcommand{\KRZ}[2]{\vspace{1mm} \hline \vspace{1mm} \color{chaptercolor}{RC #1}:\color{black} \   \hspace{0.2cm}\vspace{1mm}   {\begin{minipage}{20em}
+#2 \end{minipage}} \vspace{1mm}  \hline \vspace{1mm}  \\}
+
+
+\newcommand{\DEF}[2]{\color{chaptercolor}\bf{Def #1}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\NOTE}[2]{\color{chaptercolor}\bf{Note #1}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\COR}[2]{\color{chaptercolor}\bf{Cor #1}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\LEM}[2]{\color{chaptercolor}\bf{Lem #1}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\THE}[2]{\color{chaptercolor}\bf{Trm #1}:\color{black}    \hspace{0.2cm} #2 \\}
+\newcommand{\SA}[2]{\color{chaptercolor}\bf{S #1}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\newcommand{\PROP}[2]{\color{chaptercolor}\bf{Pro #1}:\color{black}    \hspace{0.2cm} #2 \\}
+
+\makeatother
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparsep}{0pt}
+% -----------------------------------------------------------------------
+\begin{document}
+\syntaxonly
+\centering
+\scriptsize
+
+\begin{center}
+     \Large{\textbf{Cheat Sheet}: Comp Sc BSc, WuS - Name, Surname - \textbf{WW-XXX-YY-ZZZ}} \\
+\end{center}
+\begin{multicols}{4}
+\setlength{\premulticols}{0.5pt}
+\setlength{\postmulticols}{0.5pt}
+\setlength{\multicolsep}{0.5pt}
+\setlength{\columnsep}{0.2pt}
+\setlength{\columnseprule}{0.4pt}
+
+\definecolor{col1}{RGB}{66, 101, 153}
+\definecolor{col2}{RGB}{71, 94, 153}
+\definecolor{col3}{RGB}{81, 86, 153}
+\definecolor{col4}{RGB}{93, 77, 153}
+\definecolor{col5}{RGB}{107, 66, 150}
+\definecolor{col6}{RGB}{121, 55, 141}
+\definecolor{col7}{RGB}{135, 43, 128}
+\definecolor{col8}{RGB}{149, 31, 112}
+\definecolor{col9}{RGB}{162, 18, 92}
+\definecolor{col10}{RGB}{175, 5, 71}
+\definecolor{col11}{RGB}{188, 0, 51}
+\definecolor{col12}{RGB}{200, 0, 32}
+\definecolor{col13}{RGB}{213, 0, 14}
+
+\begin{flushleft}
+
+
+% \DEF{}{}
+%\SA{}{}
+%\COR{}{}
+%\KRZ{}{}
+
+
+
+\input{sections/Wahrscheinlichkeit} %  1
+\input{sections/Zufallsvariablen} %  2
+\input{sections/Verteilungsfunktion} %  3
+\input{sections/Erwartungswert} %  4
+\input{sections/Varianz} %  5
+\input{sections/Gemeinsame Verteilungen} %  6
+\input{sections/Grenzwertsätze} %  7
+\input{sections/Statistik} %  8
+\input{sections/Testing} %  9
+
+\input{sections/Aufgaben} %  10
+\input{sections/Analysis} %  11
+
+
+
+\scriptsize
+
+
+\end{multicols}
+\newpage
+
+\end{flushleft}
+
+\input{sections/Anhang} 
+\end{document}

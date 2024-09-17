@@ -1,0 +1,511 @@
+
+
+
+\mysection[col3]{\centering Verteilungen}
+
+
+\mysubsection{\centering Bernoulli ($X \sim \operatorname{Ber}(p)$)}
+
+
+\DEF{2.24. (Bernoulli)  }{
+ Sei $p \in[0,1]$. Eine Zufallsvariable $X$ heisst Bernoulli Zufallsvariable mit Parameter $p$, wenn gilt
+ $$
+ \mathbb{P}[X=0]=1-p \quad \text { und } \quad \mathbb{P}[X=1]=p .
+ $$} 
+ 
+ \SA{2.26. (Existenzsatz von Kolmogorov)}{
+Es existiert ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{F}, \mathbb{P})$ und eine unendliche Folge von unabhängig und gleichverteilte Bernoulli Zufallsvariablen $X_1, X_2, \ldots$ auf $(\Omega, \mathcal{F}, \mathbb{P})$ mit Parameter $\frac{1}{2}$.
+ }
+ 
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = \sum_{i=1}^{n} \left( k_{i} \log(p) + (1 - k_{i}) \log(1 - p) \right)$
+\item $\frac{\partial \ell}{\partial p} = \frac{1}{p} \sum_{i=1}^{n} k_{i} - \frac{1}{1 - p} \sum_{i=1}^{n} (1 - k_{i})$
+\item $T_{MLE} = \bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
+\item $\operatorname{Bias}(T_{MLE}) = 0$ somit Erwartungstreu
+\item Konsistent
+\end{enumerate}
+}
+
+
+\NOTE{Momenterzeugende}{
+\[
+M_X(t) = \mathbb{E}[e^{tX}]
+\]
+Da $X$ die Werte 0 und 1 annimmt,
+\[
+M_X(t) = e^{t \cdot 0} \cdot P(X = 0) + e^{t \cdot 1} \cdot P(X = 1)
+\]
+\[
+M_X(t) = e^{0} \cdot (1 - p) + e^{t} \cdot p
+\]
+\[
+M_X(t) = (1 - p) + p e^t
+\]
+}
+ 
+\mysubsection{\centering Binomial ($X \sim \operatorname{Bin}(n, p)$)}
+
+\DEF{Binomialverteilung}{
+
+Wiederholung von $n$ unabhängigen Bernoulli-Experimenten mit gleichem Parameter $p$. 
+$$p(k):= \mathbb{P}(X = k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}$$ mit $\forall k \in \{0,1,\ldots, n\}$}
+
+
+
+\NOTE{Eigenschaften}{
+Es gilt
+\begin{enumerate}[leftmargin=*]
+    \item Für $X_n \sim \text{Bin}(n, \frac{\lambda}{n})$ gilt $\lim_{n \to \infty}\mathbb{P}(X_n = k) = \mathbb{P}(Y = k)$ wobei $Y \sim \text{Poisson}(\lambda)$.
+\end{enumerate}
+}
+
+\PRF{}{
+\begin{enumerate}[leftmargin=*]
+\item $
+P\left[X_n=k\right]=\binom{n}{k}\left(1-\frac{1}{n}\right)^{n-k} \frac{1}{n^k}=\frac{n!}{k!(n-k)!} \frac{1}{n^k}\left(1-\frac{1}{n}\right)^n\left(1-\frac{1}{n}\right)^{-k} .
+$ Nun gilt, $\left(1-\frac{1}{n}\right)^n \rightarrow e^{-1}$ und $\left(1-\frac{1}{n}\right)^{-k} \rightarrow 1$ wenn $n \rightarrow \infty$, und $\frac{n!}{k!(n-k)!} \frac{1}{n^k} \rightarrow 1$, da
+$
+\frac{n!}{n^k(n-k)!}=\frac{n(n-1) \cdots(n-k+1)}{n^k},
+$
+und
+$
+\frac{(n-k+1)^k}{n^k} \leq \frac{n(n-1) \cdots(n-k+1)}{n^k} \leq \frac{n^k}{n^k},
+$
+wobei der linke und rechte Ausdruck jeweils Grenzwert 1 haben. Schliesslich,
+$
+\lim _{n \rightarrow \infty} P\left[X_n=k\right]=\frac{1}{k!} e^{-1},
+$
+und $X \sim P o i(1)$ verteilt ist.
+\end{enumerate}
+
+}
+
+
+
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = k \log(p) + (N - k) \log(1 - p) + \log\left(\binom{N}{k}\right)$
+\item $\frac{\partial \ell}{\partial p} = \frac{k}{p} - \frac{N - k}{1 - p}$, \quad $\frac{\partial \ell}{\partial n} = k \log(p) + (N - k) \log(1 - p) + \frac{\partial}{\partial N} \log\left(\binom{N}{k}\right)$
+\item $T_{MLE,p} = \frac{k}{N}$, \quad $T_{MLE,n}$ hat keine geschlossene Form
+\item $\operatorname{Bias}(T_{MLE,p}) = 0$ somit Erwartungstreu, \quad $\operatorname{Bias}(T_{MLE,n})$ schwer zu berechnen :/
+\item Konsistent
+\end{enumerate}
+}
+
+\NOTE{Momenterzeugende}{
+\begin{align*}
+M_X(t) &= \mathbb{E}[e^{tX}] \\
+&= \sum_{k=0}^{n} e^{tk} \cdot P(X = k) \\
+&= \sum_{k=0}^{n} e^{tk} \cdot \binom{n}{k} p^k (1 - p)^{n - k} \\
+&= \sum_{k=0}^{n} \binom{n}{k} (p e^t)^k (1 - p)^{n - k} \\
+&= \left( (1 - p) + p e^t \right)^n
+\end{align*}}
+
+
+\mysubsection{\centering Geometrisch ($X \sim \operatorname{Geo}(p)$)}
+
+
+
+\DEF{Geometrische Verteilung}{
+
+Warten auf den $1$-ten Erfolg. 
+$$p(k):= \mathbb{P}(X = k) = (1-p)^{k-1}\cdot p \quad \forall k \in \N\setminus\{0\}$$}
+
+
+\NOTE{Eigenschaften}{
+\begin{enumerate}[leftmargin=*]
+\item Die Verteilung erfüllt Gedächtnislosigkeit:
+$$
+P[X>t+s \mid X>s]=P[X>t]
+$$
+\end{enumerate}
+}
+
+\PRF{}{
+\begin{enumerate}[leftmargin=*]
+\item $P[Z>n+k \mid Z>k]  =\frac{P[Z>n+k, Z>k]}{P[Z>k]}=\frac{P[Z>n+k]}{P[Z>k]} =\frac{(1-q)^{n+k}}{(1-q)^k}=(1-q)^n=P[Z>n]$
+\end{enumerate}
+}
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = n \log(p) + \sum_{i=1}^{n} (x_i - 1) \log(1 - p)$
+\item $\frac{\partial \ell}{\partial p} = \frac{n}{p} - \frac{\sum_{i=1}^{n} (x_i - 1)}{1 - p}$
+\item $T_{MLE}= \frac{1}{\bar{X}} = \frac{n}{\sum_{i=1}^{n} x_i}$
+\item $\operatorname{Bias}(T_{MLE}) > 0$ somit nicht Erwartungstreu
+\item Konsistent
+\end{enumerate}
+}
+
+\NOTE{Momenterzeugende}{
+\begin{align*}
+M_X(t) &= \mathbb{E}[e^{tX}] \\
+&= \sum_{k=0}^{\infty} e^{tk} \cdot P(X = k) \\
+&= \sum_{k=0}^{\infty} e^{tk} \cdot (1 - p)^k \cdot p \\
+&= p \sum_{k=0}^{\infty} (e^t (1 - p))^k \\
+&= p \cdot \frac{1}{1 - e^t (1 - p)} \\
+&= \frac{p}{1 - (1 - p)e^t}
+\end{align*}
+}
+
+
+
+
+
+
+\mysubsection{\centering Poisson ($X \sim \operatorname{Poi}(\lambda)$)}
+
+
+\DEF{Poisson-Verteilung}{
+
+Grenzwert der Binomialverteilung für grosse $n$ und kleine $p$. 
+$$p(k) := \mathbb{P}(X = k) = \frac{\lambda^k}{k!}\cdot e^{-\lambda} \quad \forall k \in \N_0, \lambda > 0$$}
+
+\NOTE{Eigenschaften}{
+\begin{enumerate}[leftmargin=*]
+    \item Seien $X_1 \sim \text{Poisson}(\lambda_1)$ und $X_2 \sim \text{Poisson}(\lambda_2)$ unabhängig. Dann gilt $(X_1 + X_2) \sim \text{Poisson}(\lambda_1 +\lambda_2)$.
+    \item Seien $X,Y\sim \operatorname{Poi}(\lambda),\operatorname{Poi}(\mu)$ Es gilt: $P[X=k \mid X+Y=n]=\binom{n}{k}\left(\frac{\lambda}{\lambda+\mu}\right)^k\left(1-\frac{\lambda}{\lambda+\mu}\right)^{n-k} = \operatorname{bin}(n,\frac{\lambda}{\lambda + \mu})$
+\end{enumerate}}
+
+\PRF{}{
+\begin{enumerate}[leftmargin=*]
+\item Für $k\in \mathbb{N}_0$  
+$P[X+Y=k]=\sum_{l=0}^{\infty}P[X+Y=k, Y=l]$ (Totale Wahrscheinlichkeit)  
+$=\sum_{l=0}^k P[X+Y=k, Y=l]$
+$=\sum_{l=0}^k P[X=k-l, Y=l]$
+$=\sum_{l=0}^k P[X=k-l]\cdot P[Y=l]$  
+$=\sum_{l=0}^k e^{-\lambda} \frac{\lambda^{k-l}}{(k-l)!}\cdot e^{-\mu}\frac{\mu^l}{l!}$
+$=e^{-(\lambda + \mu)}\frac{1}{k!} \sum_{l=0}^k  \frac{k!}{(k-l)!l!}\lambda^{k-l}\mu^l$
+$=e^{-(\lambda + \mu)}\frac{1}{k!} \sum_{l=0}^k  \binom{k}{l}\lambda^{k-l}\mu^l$  
+$=e^{-(\lambda + \mu)}\frac{(\lambda+\mu)^k}{k!}$ (binomischer Satz)
+
+
+\item 
+Sei $k \in \{0,1,\dots,n\}$:  
+$P[X=k|X+Y=n] = \frac{P[X=k, X+Y=n]}{P[X+Y=n]} 
+= \frac{P[X=k, Y=n-k]}{P[X+Y=n]} 
+= \frac{P[X=k] P[Y=n-k]}{P[X+Y=n]}$ (Def. bedingte Wahrscheinlichkeit, Unabhängigkeit von $X,Y$  
+$=\frac{e^{-\lambda} \frac{\lambda^k}{k!} \cdot e^{-\mu} \frac{\mu^{n-k}}{(n-k)!} }
+{ e^{-(\lambda+ \mu)} \frac{(\lambda+ \mu)^n}{n!} }
+= \frac{e^{-\lambda} e^{-\mu}}{e^{-(\lambda+ \mu)}} \cdot \frac{n!}{k!(n-k)!} \cdot \frac{\lambda^k \mu^{n-k}}{(\lambda+\mu)^n}
+= \binom{n}{k} \cdot \frac{\lambda^k}{(\lambda+\mu)^k} \cdot \frac{\mu^{n-k}}{(\lambda+\mu)^{n-k}}
+= \binom{n}{k} \cdot (\frac{\lambda}{\lambda+\mu})^k \cdot (\frac{\lambda +\mu  - \lambda}{\lambda+\mu})^{n-k} 
+= \binom{n}{k} \cdot (\frac{\lambda}{\lambda+\mu})^k \cdot (1- \frac{\lambda}{\lambda+\mu})^{n-k} $ (Umformen)
+
+\end{enumerate}
+
+
+}
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = \sum_{i=1}^{n} \left( x_i \log(\lambda) - \lambda - \log(x_i!) \right)$
+\item $\frac{\partial \ell}{\partial \lambda} = \frac{1}{\lambda} \sum_{i=1}^{n} x_i - n$
+\item $T_{MLE}= \bar{X} = \frac{1}{n} \sum_{i=1}^{n} x_i$
+\item $\operatorname{Bias}(T_{MLE}) = 0$ somit Erwartungstreu
+\item Konsistent
+\end{enumerate}
+}
+\PRF{Log-Likelihood}{
+Die log-Likelihood-Funktion für die Poissonverteilung lautet
+$$
+\begin{aligned}
+\log L\left(k_1, \ldots, k_n ; \lambda\right) & =\log \left(\prod_{i=1}^n e^{-\lambda} \frac{\lambda^{k_i}}{k_{i}!}\right) \\
+& =\sum_{i=1}^n \log \left(e^{-\lambda} \frac{\lambda^{k_i}}{k_{i}!}\right) \\
+& =-n \lambda+\log (\lambda) \sum_{i=1}^n k_i-\sum_{i=1}^n \log \left(k_{i}!\right) .
+\end{aligned}
+$$
+
+Die Ableitung nach $\lambda$ ist
+$$
+\frac{\partial}{\partial \lambda} \log L\left(k_1, \ldots, k_n ; \lambda\right)=-n+\frac{1}{\lambda} \sum_{i=1}^n k_i
+$$
+und diese ist 0 für
+$$
+\lambda=\frac{1}{n} \sum_{i=1}^n k_i .
+$$
+
+Also ist der ML-Schätzer für $\lambda$ gleich $T=\frac{1}{n} \sum_{i=1}^n X_i$.
+}
+
+
+\NOTE{Momenterzeugende}{
+\begin{align*}
+M_X(t) &= \mathbb{E}[e^{tX}] \\
+&= \sum_{k=0}^{\infty} e^{tk} \cdot P(X = k) \\
+&= \sum_{k=0}^{\infty} e^{tk} \cdot \frac{\lambda^k e^{-\lambda}}{k!} \\
+&= e^{-\lambda} \sum_{k=0}^{\infty} \frac{(\lambda e^t)^k}{k!} \\
+&= e^{-\lambda} \cdot e^{\lambda e^t} \\
+&= e^{\lambda (e^t - 1)}
+\end{align*}
+}
+
+\mysubsection{\centering Gleichverteilt (${X \sim \mathcal{U}([a,b])}$)}
+ 
+\DEF{2.27.  (Gleichverteilt)}{
+Eine Zufallsvariable $U$ heisst gleichverteilt auf $[0,1]$, wir schreiben ${\color{#ed91e6} U \sim \mathcal{U}([0,1])}$, falls ihre Verteilungsfunktion gegeben ist durch
+$$
+ F_U(x)= \begin{cases}0 & x<0 \\ x & 0 \leq x \leq 1 \\ 1 & x>1\end{cases}
+ $$}
+ 
+ 
+ 
+ \SA{2.28.}{
+ Die Abbildung $X: \Omega \rightarrow[0,1]$ definiert in Gleichung $
+X(\omega):=\sum_{n=1}^{\infty} 2^{-n} X_{n} (\omega)
+$ ist eine gleichverteilte Zufallsvariable auf $[0,1]$.}
+
+\LE{2.29. (Binärdarstellung)  }{
+ Jedes $x \in[0,1)$ kann eindeutig in der Form
+ $$
+ x=\sum_{n=1}^{\infty} 2^{-n} x_n
+ $$
+ dargestellt werden, wobei für alle $n \in \mathbb{N}$ gilt, $x_n \in\{0,1\}$, und für jedes $N \in \mathbb{N}$ gibt es ein $k>N$, sodass $x_k=0$ (also die Folge "endet" nicht in unendlichen vielen 1-en.) Die Folge $\left\{x_n\right\}_{n \in \mathbb{N}}$ heisst Binärdarstellung von $x$ und wir schreiben $x=\left(. x_1 x_2 x_3 \ldots\right)_2$.}
+ 
+ 
+ \SA{3.3. (Wahrscheinlichkeit eines Punktes)}{
+Sei $X: \Omega \rightarrow \mathbb{R}$ eine Zufallsvariable mit Verteilungsfunktion $F$. Für jedes $x \in \mathbb{R}$ gilt $\mathbb{P}[X=x]=F(x)-F(x-)$}
+
+\EX{}{
+Seien $X,Y,Z \sim \mathcal{U}(0,1)$. Es gilt:\\
+$\mathbb{P}[X>Y]=\int \int_{(x,y)\in [0,1]^{2}}1_{(x>y)}f_{X,Y}(x,y)dx dy =\int_{0}^{1}\int_{0}^{x}1 dy dx =\int_{0}^{1} x dx = \frac{1}{2}$ 
+
+
+$\mathbb{P}[X>Y,X>Z]=\int \int \int_{(x,y,z)\in [0,1]^{3}}1_{(x>y \wedge x>z)}f_{X,Y,Z}(x,y,z)dzdydx=\int_{0}^{1}\int_{0}^{x}\int_{0}^{x} 1 dz dy dx= \int_{0}^{1} \int_{0}^{x} x dy dx = \int_{0}^{1} x^2 dx = \frac{1}{3}$ 
+
+
+$\mathbb{P}[X>Y \mid X>Z]=\frac{\mathbb{P}[X>Y,X>Z]}{\mathbb{P}[X>Y]}=\frac{2}{3}$\\
+
+
+}
+
+\EX{}{
+Seien $X\sim \mathcal{U}(a,b)$ und $X\sim \mathcal{U}(c,d)$ Es gilt $\mathbb{P}[X>Y]=\frac{c-a}{b-a}+\frac{(b-c)^2}{2(b-a)(d-c)}$. Des weiteren:
+
+$f_{X+Y}(z)= \begin{cases}\frac{z-(a+c)}{(b-a)(d-c)} & \text { if } a+c \leq z<a+d \\ \frac{1}{(b-a)(d-c)} & \text { if } a+d \leq z<b+c \\ \frac{(b+a)-z}{(b-a)(d-c)} & \text { if } b+c \leq z<b+d\end{cases}$
+}
+
+
+
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = -n \log(b - a)$ für \(a \leq \min(x_1, x_2, \dots, x_n)\) und \(b \geq \max(x_1, x_2, \dots, x_n)\), ansonsten \(\ell = -\infty\)
+\item $\frac{\partial \ell}{\partial a} = \frac{n}{a - b}$, \quad $\frac{\partial \ell}{\partial b} = \frac{n}{b - a}$
+\item $T_{MLE,a} = \min(x_1, x_2, \dots, x_n)$, \quad $T_{MLE,b} = \max(x_1, x_2, \dots, x_n)$
+\item $\operatorname{Bias}(T_{MLE,a}) = \frac{a - b}{n+1}$, \quad $\operatorname{Bias}(T_{MLE,b}) = \frac{b - a}{n+1}$, somit beide nicht Erwartungstreu
+\item Konsistent
+\end{enumerate}
+}
+
+
+
+
+\NOTE{Momenterzeugende}{
+\begin{align*}
+M_X(t) &= \mathbb{E}[e^{tX}] \\
+&= \int_{a}^{b} e^{tx} \cdot \frac{1}{b - a} , dx \\
+&= \frac{1}{b - a} \int_{a}^{b} e^{tx} , dx \\
+&= \frac{1}{b - a} \left[ \frac{e^{tx}}{t} \right]_{a}^{b} \\
+&= \frac{1}{b - a} \left( \frac{e^{tb} - e^{ta}}{t} \right) \\
+&= \frac{e^{tb} - e^{ta}}{t (b - a)}
+\end{align*}
+}
+
+
+
+\mysubsection{\centering Exponential ($X\sim \operatorname{Exp}(\lambda)$) }
+
+\NOTE {Eigenschaften}{
+\begin{enumerate}[leftmargin=*]
+\item Die Exponential-Verteilung erfüllt Gedächtnislosigkeit:
+$$
+P[X>t+s \mid X>s]=P[X>t]
+$$
+\item  Seien $X,Y\sim \operatorname{Exp}(\lambda_X),\operatorname{Exp}(\lambda_Y)$
+ Es gilt
+ $$\mathbb{P}\left[ X>Y \right]=\frac{\lambda_Y}{\lambda_X + \lambda_Y}$$
+\end{enumerate}}
+
+
+\PRF{}{
+\begin{enumerate}[leftmargin=*]
+
+
+\item $\mathbb{P}\left[T > s + t \mid T > s\right] = \frac{\mathbb{P}\left[T > s + t \cap T > s\right]}{\mathbb{P}\left[T > s\right]} 
+    = \frac{\mathbb{P}\left[T > s + t\right]}{\mathbb{P}\left[T > s\right]} 
+    = \frac{1- \mathbb{P}\left[T \leq s + t\right]}{1-\mathbb{P}\left[T \leq s\right]} 
+    = \frac{1 -\left(1-e^{-\alpha\left(s+t\right)}\right)}{1-\left(1-e^{-\alpha s}\right)}  \ 
+    = \frac{e^{-\alpha\left(s+t\right)}}{e^{-\alpha s}}  
+    = e^{-\alpha t} 
+    = 1 - \mathbb{P}\left[T \leq t\right] 
+    = \mathbb{P}\left[T > t\right]
+$
+
+\item $\mathbb{P}[Z>Y]=\int_{-\infty}^{\infty} \underbrace{\mathbb{P}[Z>y]}_{=e^{-\mu y}} \cdot \underbrace{f_Y(y)}_{=\lambda e^{-\lambda y}} \mathrm{~d} y =\int_0^{\infty} e^{-\mu y} \lambda e^{-\lambda y}  =\int_0^{\infty} \lambda e^{-\lambda y} e^{-\mu y}   =-\frac{\lambda}{\lambda+\mu} \int_{u(0)}^{u(\infty)} e^u \mathrm{~d} u   =-\frac{\lambda}{\lambda+\mu}\left[e^{-(\lambda+\mu) y}\right]_0^{\infty}  =-\frac{\lambda}{\lambda+\mu}(0-1) =\frac{\lambda}{\lambda+\mu}$
+\end{enumerate}
+
+}
+
+
+
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = n \log(\lambda) - \lambda \sum_{i=1}^{n} x_i$
+\item $\frac{\partial \ell}{\partial \lambda} = \frac{n}{\lambda} - \sum_{i=1}^{n} x_i$
+\item $T_{MLE}= \frac{1}{\bar{X}} = \frac{n}{\sum_{i=1}^{n} x_i}$
+\item $\operatorname{Bias}(T_{MLE}) = 0$ somit Erwartungstreu
+\item Konsistent
+\end{enumerate}
+}
+
+\NOTE{Momenterzeugende}{
+\begin{align*}
+M_X(t) &= \mathbb{E}[e^{tX}] \\
+&= \int_{0}^{\infty} e^{tx} \cdot \lambda e^{-\lambda x} , dx \\
+&= \lambda \int_{0}^{\infty} e^{(t - \lambda)x} , dx \\
+&= \lambda \left[ \frac{e^{(t - \lambda)x}}{t - \lambda} \right]_{0}^{\infty} \\
+&= \lambda \left( \frac{1}{t - \lambda} \right) \quad \text{(für } t < \lambda \text{)} \\
+&= \frac{\lambda}{\lambda - t}
+\end{align*}
+}
+
+
+\mysubsection{\centering Normal ($X \sim \mathcal{N}(\mu, \sigma^2)$)}
+
+ \PROP{ 3.49. (Standardnormalverteilung)}{
+  Für $X \sim \mathcal{N}\left(\mu, \sigma^{2}\right)$ gilt $\frac{X-\mu}{\sigma} \sim \mathcal{N}(0,1)$, also
+ 
+ $$
+ F_{X}(x)=\mathbb{P}[X \leq x]=\mathbb{P}\left[\frac{X-\mu}{\sigma} \leq \frac{x-\mu}{\sigma}\right]=\Phi\left(\frac{x-\mu}{\sigma}\right) .
+ $$}
+ 
+ \NOTE{}{
+ Seien $X_1, \ldots, X_n$ unabhängige normalverteilte ZV mit Parametern $(m_1,\sigma_1^2), \ldots, (m_n, \sigma_n^2)$, dann ist 
+ $$Z = m_0 + \lambda_1 X_1 + \ldots + \lambda_n X_n$$
+ }
+
+ 
+ 
+ \LEM{4.21.}{
+  Für das uneigentliche Integral über die gaußsche Glockenkurve gilt
+ $$
+ \int_{-\infty}^{\infty} e^{\frac{-x^{2}}{2 \sigma^{2}}} \mathrm{~d} x=\sqrt{2 \pi \sigma^{2}}
+ $$}
+ 
+ \NOTE{Eigenschaften}{
+\begin{enumerate}[leftmargin=*]
+\item $\frac{1}{n}\left(X_1+\cdots+X_n\right)^2 \sim \chi_1^2$
+\end{enumerate} 
+ 
+ 
+ }
+ 
+ \PRF{}{
+ \begin{enumerate}[leftmargin=*]
+ 
+ \item Wir wissen, dass $X_{1}+\cdots + X_{n}$ einer Normalverteilung folgt mit
+ $
+\mathbb{E}\left[S_n\right]=\mathbb{E}\left[X_1+X_2+\cdots+X_n\right]=n \cdot \mathbb{E}\left[X_i\right]=0,
+\mathbb{V}\left(S_n\right)=\mathbb{V}\left(X_1+X_2+\cdots+X_n\right)=n \cdot\mathbb{V}\left(X_i\right)=n \cdot 1=n
+$ Somit ist $S_{n}\sim \mathcal{N}(\mathbb{E}[S_{n}],\mathbb{V}[S_{n}]) = \mathcal{N}(0,n)$. Wir standardisieren $S_n$ und erhalten $\frac{S_{n}-0}{\sqrt{n}} \sim \mathcal{N}(0,1)$ Dann $ \chi_{1}^{2} \sim Z^{2} \sim \left( \frac{S_{n}}{\sqrt{n}}\right) ^{2}$ und somit $ \left( \frac{S_{n}}{\sqrt{n}}\right) ^{2} \overset{\underset{\mathrm{Def}}{}}{=}  \left( \frac{X_{1}+\cdots + X_{n}}{\sqrt{n}}\right) ^{2}   = \frac{\left( X_{1}+\cdots + X_{n}\right)^{2}}{n}$
+
+ \end{enumerate} }
+
+ 
+
+
+\NOTE{MLE}{
+\begin{enumerate}[leftmargin=*]
+\item $\ell = -\frac{n}{2} \log(2\pi \sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^{n} (x_i - \mu)^2$
+\item $\frac{\partial \ell}{\partial \mu} = \frac{1}{\sigma^2} \sum_{i=1}^{n} (x_i - \mu)$, \quad $\frac{\partial \ell}{\partial \sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2\sigma^4} \sum_{i=1}^{n} (x_i - \mu)^2$
+\item $T_{MLE,\mu} = \bar{X} = \frac{1}{n} \sum_{i=1}^{n} x_i$, \quad $T_{MLE,\sigma^2} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{X})^2$
+\item $\operatorname{Bias}(T_{MLE,\mu}) = 0$, $\operatorname{Bias}(T_{MLE,\sigma^2}) = -\frac{\sigma^2}{n}$ somit $\mu$ ist Erwartungstreu, $\sigma^2$ ist nicht Erwartungstreu
+\item Konsistent
+\end{enumerate}
+}
+
+\NOTE{Momenterzeugende}{
+\begin{align*}
+&M_X(t) \\&= \mathbb{E}[e^{tX}] \\
+&= \int_{-\infty}^{\infty} e^{tx} \cdot \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}} , dx \\
+&= \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{-\infty}^{\infty} e^{tx - \frac{(x - \mu)^2}{2 \sigma^2}} , dx \\
+&= \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{-\infty}^{\infty} e^{-\frac{(x^2 - 2\mu x + \mu^2) - 2 \sigma^2 tx + 2 \sigma^2 t \mu}{2 \sigma^2}} , dx \\
+&= \frac{1}{\sqrt{2 \pi \sigma^2}} \int_{-\infty}^{\infty} e^{-\frac{(x - (\mu + \sigma^2 t))^2}{2 \sigma^2}} e^{\frac{\mu^2 + 2 \sigma^2 t \mu - 2 \sigma^2 t \mu}{2 \sigma^2}} , dx \\
+&= e^{\mu t + \frac{1}{2} \sigma^2 t^2}
+\end{align*}
+}
+ 
+ 
+ \mysubsection{\centering Chi-Quadrat-Verteilung ($
+ \mathcal{X}^2$)}
+ 
+ \DEF{}{
+Es gilt
+$\mathcal{X}^2 = Z_{1}^2 + \cdots  Z_{n}^2$ mit $Z_1, \ldots, Z_n \sim \mathcal{N}(0,1)$ 
+ 
+ }
+ 
+\NOTE{Eigenschaften}{
+\begin{enumerate}[leftmargin = *]
+\item $\chi_2^2 = X_1^2 + X_2^2 = \operatorname{Exp}(\frac{1}{2})$ mit $X_1 , X_2 \sim \mathcal{N}(0,1)$
+\end{enumerate}
+}
+
+\PRF{}{
+\begin{enumerate}[leftmargin = *]
+\item Formel for $\chi^2$ numerisch mit $n=2$ ausrechnen.
+\end{enumerate}
+}
+
+ \mysubsection{\centering Extremwertverteilt ($
+ \mathcal{X}^2$)}
+ \DEF{}{
+Es gilt:
+$$
+F_\alpha(x)=e^{-e^{-(x-\alpha)}}
+$$
+
+ }
+ 
+ \NOTE{Dichtefunktion}{
+$$
+f_\alpha(x)=F_\alpha^{\prime}(x)=e^{-(x-\alpha)} e^{-e^{-(x-\alpha)}}
+$$}
+
+\NOTE{Erwartungswert}{
+$$E[X] = \gamma + \alpha $$ mit $\gamma=-\int_0^{\infty} \log x e^{-x} d x$
+
+}
+
+
+\PRF{}{
+$
+E[X]  =\int_{\mathbb{R}} x f_\alpha(x) d x\\
+
+=\int_{\mathbb{R}}(x-\alpha) f_\alpha(x) d x+\alpha \int_{\mathbb{R}} f_\alpha(x) d x \\
+ =\int_{\mathbb{R}}(x-\alpha) e^{-(x-\alpha)} e^{-e^{-(x-\alpha)}} d x+\alpha\\
+=\int_{\mathbb{R}} s e^{-s} e^{-e^{-s}} d s+\alpha
+$
+
+Durch die Variablensubstitution $u=e^{-s}$ mit $s=-\log u$ und $\frac{d s}{d u}=-\frac{1}{u}$ erhält man für das verbleibende Integral
+
+$
+\int_{\mathbb{R}} s e^{-s} e^{-e^{-s}} d s=\int_{\infty}^0(-\log u) u e^{-u}\left(-\frac{1}{u}\right) d u=-\int_0^{\infty} \log u e^{-u} d u=\gamma
+$
+
+}
+
+
+\mysubsection{\centering Kompositionen}{
+\begin{itemize}[leftmargin = *]
+\item $\mathbb{P}[X>Y]=\sum_{j=1}^n \mathbb{P}[X>Y \mid Y=j] \mathbb{P}[Y=j]$ (diskret)
+\item $\mathbb{P}[X>Y]=\int_{-\infty}^{\infty} \mathbb{P}[X>Y \mid Y=y] f_Y(y) d y$ (stetig)
+\item Sei $X$ mit $f_x$ eine ZV und $Y\sim aX+b$. Dann ist $f_{y}(y)= \frac{1}{a}f_{x} \left( \frac{y-b}{a}\right)$
+\end{itemize}
+
+}

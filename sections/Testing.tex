@@ -1,0 +1,95 @@
+
+
+
+\mysection[col9]{\centering Testing}
+
+
+\DEF{Entscheidungsregel}{
+Die Hypothese $H_0$ wird verworfen, wenn $T(\omega) \in K$,
+Die Hypothese $\mathrm{H}_0$ wird nicht verworfen bzw. angenommen, wenn $T(\omega) \notin K$}
+
+
+\DEF{Signifikanzniveau}{Für einen Test wählt zuerst ein Signifikanzniveau $\alpha \in(0,1)$ und verlangt
+$$
+\sup _{\vartheta \in \Theta_0} \mathbb{P}_{\vartheta}[T \in K] \leq \alpha .
+$$
+	Man kontrolliert also die Wahrscheinlichkeit für einen Fehler 1. Art durch $\alpha$. Für $\alpha \downarrow$ gilt
+	\begin{itemize}[leftmargin=*]
+	\item Prob für Fehler 1. Art wird kleiner
+	\item Verwerfungsbereich muss kleiner gewählt werden
+	\item Prob für Fehler 2. Art wird grösser
+	\item Macht des Tests wird kleiner
+	\end{itemize}
+	}
+	
+
+
+
+\DEF{8.7. (Likelihood-Quotient)}{
+   Für $\vartheta_0 \in \Theta_0, \vartheta_A \in \Theta_A$ und $x_1, \ldots, x_n \in \mathbb{R}$ definieren wir den Likelihood-Quotienten durch
+ $$
+ R\left(x_1, \ldots, x_n ; \vartheta_0, \vartheta_A\right)=\frac{L\left(x_1, \ldots, x_n ; \vartheta_A\right)}{L\left(x_1, \ldots, x_n ; \vartheta_0\right)} \text {. }
+ $$
+ 
+ Als Konvention setzen wir $R\left(x_1, \ldots, x_n ; \vartheta_0, \vartheta_A\right)=+\infty$, wenn $L\left(x_1, \ldots, x_n ; \vartheta_0\right)=0$}
+
+\DEF{8.8. (Likelihood-Quotienten-Test)}{
+   Sei $c \geq 0$. Der Likelihood-Quotienten-Test mit Parameter $c$ ist ein Test $(T, K)$ mit Teststatistik $T=R\left(X_1, \ldots, X_n ; \vartheta_0, \vartheta_A\right)$ und Verwerfungsbereich $K=(c, \infty]$.}
+   
+   
+   \LEM{8.9. (Neyman-Pearson-Lemma)}{
+   Sei $\Theta_0=\left\{\vartheta_0\right\}$ und $\Theta_A=\left\{\vartheta_A\right\}$. Sei $(T, K)$ ein Likelihood-Quotienten-Test mit Parameter $c$ und Signifikanzniveau $\alpha^*:=\mathbb{P}_{\vartheta_0}[T \in K]$. Ist $\left(T^{\prime}, K^{\prime}\right)$ ein anderer Test mit Signifikanzniveau $\mathbb{P}_{\vartheta_0}\left[T^{\prime} \in K^{\prime}\right]=: \alpha \leq \alpha^*$, so gilt auch
+ $$
+ \mathbb{P}_{\vartheta_A}\left[T^{\prime} \in K^{\prime}\right] \leq \mathbb{P}_{\vartheta_A}[T \in K] .
+ $$
+ Das bedeutet, jeder andere Test mit kleinerem Signifikanzniveau hat auch kleinere Macht bzw. grössere Wahrscheinlichkeit für einen Fehler 2. Art.}
+ 
+ \DEF{8.10. (Verallgemeinerung des Likelihood-Quotient)}{
+Der verallgemeinerte Likelihood-Quotient ist gegeben durch
+$$
+ R\left(x_1, \ldots, x_n\right)=\frac{\sup _{\vartheta \in \Theta_A} L\left(x_1, \ldots, x_n ; \vartheta\right)}{\sup _{\vartheta \in \Theta_0} L\left(x_1, \ldots, x_n ; \vartheta\right)}
+ $$
+ oder auch
+ $$
+ \tilde{R}\left(x_1, \ldots, x_n\right)=\frac{\sup _{\vartheta \in \Theta_A \cup \Theta_0} L\left(x_1, \ldots, x_n ; \vartheta\right)}{\sup _{\vartheta \in \Theta_0} L\left(x_1, \ldots, x_n ; \vartheta\right)} .
+ $$}
+
+
+
+\KRZ{Z-Test}{
+Gegeben:
+\begin{itemize}[leftmargin=*]
+\item Daten: $x_i$ und $\bar{x}=\frac{\sum^{i=1}{n} x_i }{n}$
+\item Nullhypothese : $\mu_{0}$
+\item Alternativhypothese :
+
+\begin{itemize}[leftmargin=*]
+\item $\mu >\mu_{0}$ (rechtsseitig)
+\item $\mu <\mu_{0}$ (linksseitig)
+\item $\mu \neq \mu_{0}$ (beidseitig)
+\end{itemize}  
+\item Signifikanzniveau : $\alpha$
+\end{itemize}
+\begin{enumerate}[leftmargin=*]
+\item Berechne $Z$-Score
+$$
+Z=\frac{\bar{x}-\mu_0}{\frac{\sigma}{\sqrt{n}}}
+$$
+\item Berechne $z$
+\begin{itemize}[leftmargin=*]
+\item $z = z_{1-\alpha} = \Phi^{-1}(1-\alpha)	$ (rechtsseitig)
+\item $z = z_{\alpha} = \Phi^{-1}(\alpha)	$ (linksseitig)
+\item $z_{+,-} = \pm z_{\frac{\alpha}{2}} = \pm \Phi^{-1}(\frac{\alpha}{2})	$  (beidseitig)
+\end{itemize}
+\item Entscheide:
+\begin{itemize}[leftmargin=*]
+\item $Z>z \Longrightarrow \text{ verwerfe } \mu_{0}$ (rechtsseitig)
+\item $Z < z \Longrightarrow \text{ verwerfe } \mu_{0}$ (linksseitig)
+\item   $Z>z_{+} \vee  Z<z_{-} \Longrightarrow \text{ verwerfe } \mu_{0}$    (beidseitig)
+\end{itemize}
+\end{enumerate}
+}
+
+
+
+

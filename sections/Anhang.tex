@@ -1,0 +1,51 @@
+
+
+\begin{table}[ht]
+\centering
+\setlength{\tabcolsep}{12pt} % increase column spacing
+\renewcommand{\arraystretch}{1.5} % increase row spacing
+\begin{tabularx}{\textwidth}{|l|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}p{2cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+\hline
+Verteilung & Parameter & $ \mathbb{E}[X] $ & $ \mathbb{V}(X) $ & $ p_X(t) $ & $ F_X(t) = \mathbb{P}[X\le t] $ \\
+\hline
+Bernoulli $\sim \operatorname{Ber}(p)$ & \begin{tabular}[t]{@{}p{5cm}@{}} $ p $: ErfolgsWK \end{tabular} & $ p $ & $ p \cdot (1-p) $ & $ p^t(1-p)^{1-t} $ & $ 1-p $ für $ 0 \leq t < 1 $ \\
+\hline
+Binomial $\sim \operatorname{Bin}(n, p)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ n $:  Anzahl Versuche, \\ $ p $:  ErfolgsWK \end{tabular} & $ np $ & $ np(1-p) $ & $ \binom{n}{t}p^t(1-p)^{n-t} $ & $ \sum_{k=0}^{t} \binom{n}{k} p^k(1-p)^{n-k} $ \\
+\hline
+Geometrisch $\sim \operatorname{Geo}(p)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ p $:  ErfolgsWK, \\ $ t $:  Anzahl Versuche \end{tabular} & $ \frac{1}{p} $ & $ \frac{1-p}{p^2} $ & $ p(1-p)^{t-1} $ & $ 1-(1-p)^t$ \\
+\hline
+Negativbinomial $\sim \operatorname{NegBin}(r, p)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ r $: Anzahl der Erfolge, \\ $ p $:  Erfolgswahrscheinlichkeit \end{tabular} & $ \frac{r}{p} $ & $ \frac{r(1-p)}{p^2} $ & $ \binom{t+r-1}{t} p^t (1-p)^r $ & $ I_{1-p}(r, t+1) $ \\
+\hline
+Hypergeometrisch $\sim \operatorname{H}(N, M, n)$ & \begin{tabular}[t]{@{}p{8cm}@{}} $ N $:  Gesamtzahl, \\ $ M $:  Anzahl der Erfolge, \\ $ n $:  Zufalsstichprobe \end{tabular} & $ n \frac{M}{N} $ & $ n \frac{M}{N} \frac{N-M}{N} \frac{N-n}{N-1} $ & $ \frac{\binom{M}{t} \binom{N-M}{n-t}}{\binom{N}{n}} $ & $ \frac{\sum_{k=0}^{t} \binom{M}{k} \binom{N-M}{n-k}}{\binom{N}{n}} $ \\
+\hline
+Poisson $\sim \operatorname{Poi}(\lambda)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ \lambda $:  Erwartungswert \\ $ \lambda $:  Varianz \end{tabular} & $ \lambda $ & $ \lambda $ & $ \frac{\lambda^t}{t!}e^{-\lambda} $ & $ e^{-\lambda} \sum_{k=0}^{t} \frac{\lambda^{k}}{k!} $ \\
+\hline
+
+Gleichverteilung $\sim \mathcal{U}([a,b])$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ n$: Anzahl Ereignisse \\ $x_i$ : Ereignisse \end{tabular} 
+
+& $ \frac{1}{n}\sum_{i=1}^{n}x_i $ 
+
+& $  \frac{1}{n}\sum_{i=1}^{n}x_i^2 - \frac{1}{n^2} \left(\sum_{i=1}^{n}x_i \right)^2  $ 
+
+& $\frac{1}{n} $ 
+
+& $ \frac{\mid \left\{k:x_k \le t \right\} \mid}{n} $ \\
+
+
+
+\hline
+Gleichverteilung $\sim \mathcal{U}([a,b])$(Intervall) & \begin{tabular}[t]{@{}p{7cm}@{}} $ [a,b] $:  Intervall \end{tabular} & $ \frac{a+b}{2} $ & $ \frac{1}{12}(b-a)^2 $ & $ \begin{cases} \frac{1}{b-a} & a \le x \le b \\ 0 & \text{sonst} \end{cases} $ & $ \begin{cases} 0 & x\le a \\ \frac{t-a}{b-a} & a < x < b \\ 1 & x \ge b \end{cases} $ \\
+\hline
+Exponentialverteilung $\sim \operatorname{Exp}(\lambda)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ \lambda: $  $ \frac{1}{\mathbb{E}[X]} $ \end{tabular} & $ \frac{1}{\lambda} $ & $ \frac{1}{\lambda^2} $ & $ \begin{cases} \lambda e^{-\lambda t} & t \geq 0 \\ 0 & t < 0 \end{cases} $ & $ \begin{cases} 1-e^{-\lambda t} & t>0 \\ 0 & t \leq 0\end{cases} $ \\
+\hline
+Cauchyverteilung $\sim \operatorname{Cauchy}(x_0, \gamma)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ x_0 $:  Lageparameter, \\ $ \gamma $:  Skalenparameter \end{tabular} & Undefiniert & Undefiniert & $ \frac{1}{\pi \gamma \left[ 1+\left( \frac{t-x_0}{\gamma} \right) ^2 \right] } $ & $ \frac{1}{\pi } \arctan \left( \frac{t-x_0}{\gamma} \right) + \frac{1}{2} $ \\
+\hline
+Normalverteilung $\sim \mathcal{N}(\mu, \sigma^2)$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ \sigma^2 $:  Varianz, \\ $ \mu: $  $ \mathbb{E}[X] $ \end{tabular} & $ \mu $ & $ \sigma^2 $ & $ \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(t-\mu)^2}{2\sigma^2}} $ & $ \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{t-\mu}{\sigma \sqrt{2}} \right) \right] $ \\
+\hline
+$ \chi ^2 $-Verteilung $\sim \chi^2_n$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ n $:  Freiheitsgrad \end{tabular} & $ n $ & $ 2n $ & $ \frac{1}{2^{\frac{n}{2}}\Gamma (\frac{n}{2})} t^{\frac{n}{2}-1} e^{-\frac{t}{2}} $ für $ t>0$ & $\operatorname{Poi}\left( \frac{n}{2}, \frac{t}{2}\right) $ \\
+\hline
+t-Verteilung $\sim t_n$ & \begin{tabular}[t]{@{}p{7cm}@{}} $ n $:  Freiheitsgrad \end{tabular} & $ \begin{cases} 0 & n>1 \\ \text{undef.} & \text{sonst} \end{cases} $ & $ \begin{cases} \frac{n}{n-2} & n> 2 \\ \infty & 1<n \leq 2 \\ \text{undef.} & \text{sonst} \end{cases} $ & $ \frac{\Gamma \left( \frac{n+1}{2} \right) }{\sqrt{n\pi } \cdot \Gamma (\frac{n}{2})} \left( 1+ \frac{t^2}{n} \right) ^{- \frac{n+1}{2}} $ & Undefiniert \\
+\hline
+\end{tabularx}
+\end{table}
+

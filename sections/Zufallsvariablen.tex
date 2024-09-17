@@ -1,0 +1,208 @@
+
+
+
+\mysection[col2]{\centering Zuvallsvariablen}
+
+
+\mysubsection{\centering Allgemein}
+
+\DEF{3.4.}{
+ Sei $A \in \mathcal{F}$ ein Ereignis. Wir sagen $A$ tritt $\mathbb{P}$-fast sicher ( $\mathbb{P}$-f.s.) ein, falls $\mathbb{P}[A]=1$. Im Englischen sagen wir $\mathbb{P}$-almost surely (P.a.s.).
+ Wenn klar ist, welches Wahrscheinlichkeitsmass $\mathbb{P}$ gemeint ist, kürzen wir ab und schreiben einfach fast sicher (f.s.).}
+ 
+ 
+
+
+ \SA{2.21. (Gruppierungen von Zufallsvariablen) }{ Seien $X_1, \ldots, X_n$ unabhängige Zufallsvariablen. Seien $1 \leq i_1<i_2<\ldots<i_k \leq n$ Indexe und $\varphi_1, \ldots, \varphi_k$ Abbildungen. Dann sind
+$
+Y_1:=\varphi_1\left(X_1, \ldots, X_{i_1}\right), Y_2:=\varphi_2\left(X_{i_{1}+1}, \ldots, X_{i_2}\right), \ldots, Y_k:=\varphi_k\left(X_1, \ldots, X_{i_k}\right)
+$
+unabhängig.}
+
+\DEF{2.22. (Unabhängig und identisch verteilt) }{ 
+ Eine Folge von Zufallsvariablen $X_1, X_2, \ldots$ heisst
+ \begin{itemize}[leftmargin=*]
+ 
+
+\item unabhängig falls $X_1, \ldots, X_n$ für alle $n \in \mathbb{N}$ unabhängig sind,
+\item unabhängig und identisch verteilt (u.i.v.), falls sie unabhängig ist und die Zufallsvariablen dieselbe Verteilungsfunktion haben, d.h. für alle $k, \ell \in \mathbb{N}$ gilt $F_{X_k}=F_{X_{\ell}}$.
+\item Im Englischen sagt man independent and identically distributed und benutzt die Abkürzung i.i.d., die auch wir in dieser Vorlesung benutzen werden.
+ \end{itemize}}
+
+  \DEF{3.7. (Diskrete Zufallsvariablen) }{
+ Eine Zufallsvariable $X: \Omega \rightarrow \mathbb{R}$ heisst diskret, falls eine endliche oder abzählbare Menge $W \subset \mathbb{R}$ existiert, sodass $\mathbb{P}[X \in W]=1$, wenn also die Werte von $X$ fast sicher in $W$ liegen.} 
+
+
+ 
+
+
+\DEF{2.1. (Zufallsvariable) }{
+ Sei $(\Omega, \mathcal{F}, \mathbb{P})$ ein Wahrscheinlichkeitsraum. Eine (reellwertige) Zufallsvariable (Z.V.) ist eine Abbildung $X: \Omega \rightarrow \mathbb{R}$, sodass für alle $x \in \mathbb{R}$ gilt,
+ $$
+ \{\omega \in \Omega \mid X(\omega) \leq x\} \in \mathcal{F} .
+ $$}
+ 
+\mysubsection{\centering Gewichtsfunktion (pmf)} 
+
+  \DEF{3.9. (Gewichtsfunktion) }{
+Für eine diskrete Zufallsvariable $X$ mit Wertebereich $W(X)=\left\{x_1, x_2, \ldots\right\}$ und den dazugehörigen Wahrscheinlichkeiten $\left\{p_1, p_2, \ldots\right\}$ definieren wir die Gewichtsfunktion oder diskrete Dichte von $X$ als
+ $$
+ p_X: W(X) \rightarrow[0,1] \quad \text { mit } \quad p_X\left(x_k\right):=\mathbb{P}\left[X=x_k\right]=p_k .
+ $$
+ 
+ Die Zahlenfolge $\left\{p_X\left(x_k\right)\right\}_{x_k \in W(X)}$ nennen wir auch Verteilung von $X$.} 
+ 
+  
+\PROP{3.10. }{
+ Die Gewichtsfunktion $p_X$ einer diskreten Zufallsvariablen $X$ hat folgende Eigenschaften:
+ \begin{itemize}[leftmargin=*]
+ 
+\item Für alle $x_k \in W(X)$ gilt $p_X\left(x_k\right) \in[0,1]$.
+\item  Die Wahrscheinlichkeiten addieren sich zu 1 ,
+ \end{itemize}$$
+\sum_{x_k \in W(X)} p_X\left(x_k\right)=\mathbb{P}[X \in W(X)]=1
+$$}
+ 
+\NOTE{Verhältnis cdf/pmf}{
+Es gilt:
+$$
+f_X(x)=\frac{d}{d x} F_X(x)
+$$
+Umkehrung stimmt nicht!
+}
+ 
+\mysubsection{\centering Verteilungsfunktion (cdf)}
+
+  \SA{3.12. }{
+ Sei $X$ eine diskrete Zufallsvariable mit Werten in $W$ und Gewichtsfunktion $p_X$. Dann ist die Verteilungsfunktion von $X$ gegeben durch
+ $$
+ F_X(x)=\mathbb{P}[X \leq x]=\sum_{\substack{y \leq x \\ y \in W}} p_{X(y)}\tag{3.1}
+ $$
+}
+
+
+
+\DEF{2.10. (Verteilungsfunktion)}{ 
+ Sei $X$ eine reellwertige Zufallsvariable auf einem Wahrscheinlichkeitsraum $(\Omega, \mathcal{F}, \mathbb{P})$. Die Verteilungsfunktion von $X$ ist die Funktion $F_X: \mathbb{R} \rightarrow[0,1]$, definiert durch
+ $$
+ F_X(x):=\mathbb{P}[X \leq x]
+ $$}
+
+\PROP{2.12}{
+Sei $X$ eine reellwertige Zufallsvariable und seien $a<b$ zwei reelle Zahlen. Dann gilt
+ $$
+ \mathbb{P}[a<X \leq b]=F_X(b)-F_X(a) .
+ $$}
+ 
+
+\SA{2.13. (Eigenschaften von Verteilungsfunktionen) }{
+Sei $X$ eine Zufallsvariable auf einem Wahrscheinlichkeitsraum $(\Omega, \mathcal{F}, \mathbb{P})$. Die Verteilungsfunktion $F_X: \mathbb{R} \rightarrow[0,1]$ von $X$ erfüllt folgende Eigenschaften:
+\begin{enumerate}[leftmargin=*]
+\item $F_X$ ist monoton wachsend.
+\item $F_X$ ist rechtsstetig, d.h. für alle $x \in \mathbb{R}$ gilt $F_X(x)=\lim _{h \searrow 0} F_X(x+h)$.
+\item Es gelten die Grenzwerte $\lim _{x \rightarrow-\infty} F_X(x)=0$ und $\lim _{x \rightarrow \infty} F_X(x)=1$.
+\end{enumerate}}
+
+\NOTE{}{\begin{enumerate}[leftmargin=*]
+ \item  Wenn $F_X$ in einem Punkt $a \in \mathbb{R}$ nicht stetig ist, dann ist die "Sprunghöhe" $F_X(a)-F_X(a-)$ gleich der Wahrscheinlichkeit $\mathbb{P}(X=a)$.
+ \item Falls $F_X$ stetig in einem Punkt $a \in \mathbb{R}$, dann gilt $\mathbb{P}(X=a)=$ 0.
+\end{enumerate}}
+
+
+\DEF{2.16. (Gemeinsame Verteilungsfunktion) }{
+ Seien $X_1, \ldots, X_n$ Zufallsvariablen. Die gemeinsame Verteilungsfunktion von $X_1, \ldots, X_n$ (joint cumulative distribution function) ist die Abbildung $F: \mathbb{R}^n \rightarrow[0,1]$ definiert durch
+ $$
+ \left(x_1, \ldots, x_n\right) \mapsto F\left(x_1, \ldots, x_n\right)=\mathbb{P}\left[X_1 \leq x_1, \ldots, X_n \leq n\right]
+ $$
+}
+
+\DEF{ 2.18. (Unabhängigkeit)}{
+ Seien $X_1, \ldots, X_n$ Zufallsvariablen auf einem Wahrscheinlichkeitsraum $(\Omega, \mathcal{F}, \mathbb{P})$. Dann heissen $X_1, \ldots, X_n$ unabhängig, wenn für alle $x_1, \ldots, x_n \in \mathbb{R}$ gilt
+ 
+ \tiny
+ $$
+ \mathbb{P}\left[X_1 \leq x_1, \ldots, X_n \leq x_n\right]=\mathbb{P}\left[X_1 \leq x_1\right] \cdot \ldots \cdot \mathbb{P}\left[X_n \leq x_n\right]
+ $$ 
+ \scriptsize
+ und somit auch
+  $$
+F_{X_1 , X_2 , \ldots} (X_1 , X_2 , \ldots) = F_{X_1}(x_1)F_{X_2}(x_2) \ldots
+ $$
+ 
+ 
+ }
+ 
+ 
+
+ 
+ 
+ 
+
+ \DEF{3.37. (Stetig verteilte Zufallsvariablen)}{
+Eine Zufallsvariable $X: \Omega \rightarrow \mathbb{R}$ heisst stetig, wenn eine nicht-negative Funktion $f_X: \mathbb{R} \rightarrow \mathbb{R}_{+}$ existiert, sodass die Verteilungsfunktion $F_X$ dargestellt werden kann als
+ $$
+ F_X(x)=\int_{-\infty}^x f_X(t) \mathrm{d} t .
+ $$
+ 
+ Wir nennen $f_X$ die Dichte(-funktion) von $X$ (probability density function $(p d f))$.}
+ 
+ \DEF{3.38. (Stückweise stetig differenzierbare Funktionen)}{
+Im Kontext von $\mathbb{R}$ sagt man oft, dass ein Objekt eine Eigenschaft stückweise (piecewise) erfüllt, wenn sie die Eigenschaft auf einer Partition des Definitionsbereichs erfüllt.
+ Wir sagen, eine Funktion $f$ ist stückweise stetig differenzierbar, wenn es eine Partition $-\infty=x_{0}<x_{1}<\ldots<x_{n-1}<x_{n}=\infty$ gibt, sodass $f$ auf jedem Intervall $\left(x_{i}, x_{i+1}\right)$ stetig differenzierbar ist.}
+
+
+\SA{3.39}{
+Sei $X$ eine Zufallsvariable und sei ihre Verteilungsfunktion $F_{X}$ stetig und stückweise stetig differenzierbar auf einer Partition $-\infty=x_{0}<x_{1}<\ldots<x_{n-1}<x_{n}=\infty$. Dann ist $X$ eine stetige Zufallsvariable und die Dichtefunktion $f_{X}$ kann wie folgt konstruiert werden,
+$$f_{X}(x)= \begin{cases}F_{X}^{\prime}(x) & \exists k \in\{0, \ldots, n-1\}: x \in\left(x_{k}, x_{k+1}\right) \\ a_{k} & x \in\left\{x_{1}, \ldots, x_{n-1}\right\},\end{cases}$$
+wobei die Werte $a_{k}$ beliebig gewählt werden dürfen.
+ In anderen Worten, es gilt $f_{X}(x)=F_{X}^{\prime}(x)$ in allen Stetigkeitspunkten $x$ von $f_{X}$.}
+ 
+
+ 
+
+\mysubsection{\centering Inverse}
+
+
+ \DEF{2.30. (Verallgem einerte inverse Verteilungsfunktion)}{
+ Die verallgemeinerte inverse Verteilungsfunktion von $F$ ist eine Abbildung $F^{-1}:(0,1) \rightarrow \mathbb{R}$ definiert durch
+ $$
+ F^{-1}(\alpha)=\inf \{x \in \mathbb{R} \mid F(x) \geq \alpha\} .
+ $$
+ 
+ Nach Definition des Infimums und unter Verwendung der Rechtsstetigkeit von $F$ gilt für jedes $x \in \mathbb{R}$ und $\alpha \in(0,1)$, dass
+ $$
+ F^{-1}(\alpha) \leq x \Longleftrightarrow \alpha \leq F(x) .
+ $$}
+
+
+\SA{2.31. (Inversionsmethode) }{
+ Sei $F: \mathbb{R} \rightarrow[0,1]$ eine Abbildung mit den Eigenschaften (i)-(iii) aus Satz 2.13. Sei $U \sim \mathcal{U}([0,1])$. Dann hat die Zufallsvariable $X:=F^{-1}(U)$ die Verteilungsfunktion $F$.}
+ 
+ 
+ 
+\mysubsection{\centering Zusammengesetzte}
+
+\EX{}{
+Sei $X$ mit $F_X$ gegeben und $Y \sim \phi(X)$. Dann kann $F_Y(y)$ berechnen mit:
+\begin{enumerate}[leftmargin=*]
+\item Schreibe $F_{Y}(y)=\mathbb{P}[X\le \phi^{-1}(y)]$ (Falls quadratisch: $\mathbb{P}[-\sqrt{•}\le X\le \sqrt{•}])$
+\item Finde Grenzen: $F_{Y}(y) \overset{\underset{\mathrm{!}}{}}{=} F_{X}(x)=0,1$
+\item Schreibe  $
+ F_Y(y)= \begin{cases}0 & x<c_{0} \\ F_{X}(\phi^{-1}(y)) & 0 \leq x \leq 1 \\ 1 & x> c_{1}\end{cases}
+ $
+\end{enumerate}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+

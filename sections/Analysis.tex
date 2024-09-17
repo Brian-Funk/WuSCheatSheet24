@@ -1,0 +1,237 @@
+\mysection[col11]{\centering Analysis}
+
+\NOTE{Gamma Funktion}{
+Die Funktion $\Gamma$ nennt man (Eulersche) Gammafunktion und sie ist für $x \geq 0$ definiert durch
+$$
+\Gamma(x)=\int_0^{\infty} t^{x-1} e^{-t} \mathrm{~d} t
+$$
+$\Gamma$ hat eine grundlegende Verbindung zur Fakultätsfunktion, denn
+$$
+\Gamma(n+1)=n \text { ! für } n \in \mathbb{N}_0 \text {. }
+$$}
+
+\NOTE{Partielle Integration}{
+	
+$$\int f'(x) g(x) \mathop{dx} = f(x)g(x) - \int f(x) g'(x) \mathop{dx}$$
+oder
+$$\int_{a}^{b} f'(x) g(x) \mathop{dx} = \left|f(x)g(x) \right|_{a}^{b} - \int_{a}^{b} f(x) g'(x) \mathop{dx}$$}
+
+
+
+\NOTE{Substitution}{
+	Um $\int_a^b f(g(x)) \mathop{dx}$ zu berechnen: Ersetze $g(x)$ durch $u$ und integriere $\int_{g(a)}^{g(b)} f(u) \frac{\text{d}u}{g'(x)}$.
+
+\begin{itemize}[leftmargin=*]
+	\item $g'(x)$ muss sich herauskürzen, sonst nutzlos.
+	\item Grenzen substituieren nicht vergessen.
+	\item Alternativ: unbestimmtes Integral berechnet werden und dann $u$ wieder durch $x$ substituieren.
+	\item Man kann auch das Theorem in die andere Richtung anwenden: \[\int_a^b f(u) \mathop{du} = \int_{g^{-1}(a)}^{g^{-1}(b)}f(g(x))g'(x) \dx\]
+	\item Sei $\X, Y$ kompakt, $f: Y \subset \R^n \to \R$ stetig. 
+	
+	Sei $\gamma: \X \to Y$ mit $\X = \X_0 \cup B, Y = Y_0 \cup C$ ($B, C$ Rand von $\X, Y$). 
+	
+	Wenn $\gamma: \X_0 \to Y_0$ bijektiv und $C^1$ mit det$(J_\gamma(x)) \neq 0, \forall x \in \X_0$, dann gilt 
+	\[\int_Y f(y)\mathop{dy} = \int_{\X} f(\gamma(x))|\text{det}(J_\gamma(x))|\dx\]
+\end{itemize}}
+
+\NOTE{Binomialsatz}{	\[(x + y)^n = \sum_{k = 0}^n  \binom{n}{k} x^{n-k}y^k \quad \text{mit:}\quad  \binom{n}{k}=\frac{n!}{k!(n-k)!}\]
+
+Des weiteren gilt:
+$$
+\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k} .
+$$
+
+}
+
+\NOTE{Trigo-Werte}{
+
+\begin{center} 
+ \begin{tabular}{c|cccccc}
+  deg& $0 \degree $ & $30 \degree $ & $45 \degree $ & $60 \degree $ & $90 \degree $ & $180 \degree $ \\
+  \hline
+  rad & 0 & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ & $\pi$ \\
+  cos & 1 & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & 0 & -1 \\
+  sin & 0 & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & 1 & 0 \\
+  tan & 0 & $\frac{1}{\sqrt{3}}$ & 1 & $\sqrt{3}$ & $+\infty$ & 0 \\
+ \end{tabular}
+\end{center} 
+
+}
+
+
+\NOTE{Log/Exp Regeln}{
+
+\begin{center}
+
+
+\begin{tabular}{ |c|c| }
+\textbf{Exponential} & \textbf{Logarithm} \\
+\hline
+$a^0 = 1$ & $\log_a 1 = 0$ \\
+$a^1 = a$ & $\log_a a = 1$ \\
+$a^{m+n} = a^m \cdot a^n$ & $\log_a (xy) = \log_a x + \log_a y$ \\
+$a^{m-n} = \frac{a^m}{a^n}$ & $\log_a \left(\frac{x}{y}\right) = \log_a x - \log_a y$ \\
+$(a^m)^n = a^{mn}$ & $\log_a (x^r) = r \log_a x$ \\
+$(ab)^m = a^m \cdot b^m$ & $\log_a x = \frac{\log_b x}{\log_b a}$ \\
+$\left(\frac{a}{b}\right)^m = \frac{a^m}{b^m}$ & $\log_a (a^x) = x$ \\
+$e^{\ln x} = x$ & $\ln(e^x) = x$ \\
+ & $e^{\ln x} = x \quad \text{(for } x > 0)$ \\
+\end{tabular}
+\end{center}
+
+}
+
+\NOTE{Quadratic Form}{
+Für $a^2 + bx +c =0$ gilt:
+$$
+x=\frac{-b \pm \sqrt{b^2-4 a c}}{2 a}
+$$
+
+
+}
+
+\subsection{Ableitungen}
+\begin{center}
+  % the c>{\centering\arraybackslash}X is a workaround to have a column fill up all space and still be centered
+  \begin{tabularx}{\linewidth}{c>{\centering\arraybackslash}Xc}
+  \toprule
+  $\mathbf{F(x)}$ & $\mathbf{f(x)}$ & $\mathbf{f'(x)}$ \\
+  \midrule
+  $\frac{x^{-a+1}}{-a+1}$ & $\frac{1}{x^a}$ & $\frac{a}{x^{a+1}}$ \\
+  $\frac{x^{a+1}}{a+1}$ & $x^a \ (a \ne -1)$ & $a \cdot x^{a-1}$ \\
+  $\frac{1}{k \ln(a)}a^{kx}$ & $a^{kx}$ & $ka^{kx} \ln(a)$ \\
+  $\ln |x|$ & $\frac{1}{x}$ & $-\frac{1}{x^2}$ \\
+  $\frac{2}{3}x^{3/2}$ & $\sqrt{x}$ & $\frac{1}{2\sqrt{x}}$\\
+  $\frac{n}{n+1}x^{\frac{1}{n}+1}$ & $\sqrt[n]{x}$ & $\frac{1}{n}x^{\frac{1}{n}-1}$\\
+  $-\cos(x)$ & $\sin(x)$ & $\cos(x)$ \\
+  $\sin(x)$ & $\cos(x)$ & $-\sin(x)$ \\
+  $\frac{1}{2}(x-\frac{1}{2}\sin(2x))$ & $\sin^2(x)$ & $2 \sin(x)\cos(x)$ \\
+  $\frac{1}{2}(x + \frac{1}{2}\sin(2x))$ & $\cos^2(x)$ & $-2\sin(x)\cos(x)$ \\
+  \multirow{2}*{$-\ln|\cos(x)|$} & \multirow{2}*{$\tan(x) = \frac{\sin}{\cos}$} & $\frac{1}{\cos^2(x)}$  \\
+  & & $1 + \tan^2(x)$ \\
+  $\cosh(x)$ & $\sinh(x)$ & $\cosh(x)$ \\
+  $\log(\cosh(x))$ & $\tanh(x)$ & $\frac{1}{\cosh^2(x)}$ \\
+  $\ln | \sin(x)|$ & $\cot(x)$ & $-\frac{1}{\sin^2(x)}$ \\
+  $\frac{1}{c} \cdot e^{cx}$ & $e^{cx}$ & $c \cdot e^{cx}$ \\
+  $x(\ln |x| - 1)$ & $\ln |x|$ & $\frac{1}{x}$ \\
+  $\frac{1}{2}(\ln(x))^2$ & $\frac{\ln(x)}{x}$ & $\frac{1 - \ln(x)}{x^2}$ \\
+  $\frac{x}{\ln(a)} (\ln|x| -1)$ & $\log_a |x|$ & $\frac{1}{\ln(a)x}$ \\
+
+  \bottomrule
+  \end{tabularx}
+\end{center}
+
+\begin{center}
+  \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+  \toprule
+  $\mathbf{F(x)}$ & $\mathbf{f(x)}$ \\
+  \midrule
+  $\frac{1}{a\cdot (n+1)}(ax+b)^{n+1}$ & $(ax+b)^n$ \\
+  
+  $\arcsin(x)$ & $\frac{1}{\sqrt{1 - x^2}}$ \\
+  $\arccos(x)$ & $\frac{-1}{\sqrt{1 - x^2}}$ \\
+  $\arctan(x)$ & $\frac{1}{1 + x^2}$ \\ 
+  $\text{arcsinh}(x)$ & $\frac{1}{\sqrt{1 + x^2}}$ \\
+  $\text{arccosh}(x) $ & $\frac{1}{\sqrt{x^2 - 1}}$ \\
+  $\text{arctanh}(x) $ & $\frac{1}{1 - x^2}$ \\ 
+  $x^x \ (x > 0)$ & $x^x \cdot (1 + \ln x)$ \\
+  $\log_a|x|$ & $\frac{1}{x \ln a}=\log_a(e)\frac{1}{x}$ \\
+  \bottomrule
+  \end{tabularx}
+\end{center}
+
+
+
+
+
+
+
+
+\subsection{Integrale}
+\begin{center}
+ \begin{tabularx}{\linewidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+  \toprule
+  $\mathbf{f(x)}$ & $\mathbf{F(x)}$ \\
+  \midrule
+  $\int f'(x) f(x) \dx$ & $\frac{1}{2}(f(x))^2$ \\
+  $\int \frac{f'(x)}{f(x)} \dx$ & $\ln|f(x)|$ \\
+  $\int_{-\infty}^\infty e^{-x^2} \dx$ & $\sqrt{\pi}$ \\
+  $\int (ax+b)^n \dx$ & $\frac{1}{a(n+1)}(ax+b)^{n+1}$ \\
+  $\int x(ax+b)^n \dx$ & $\frac{(ax+b)^{n+2}}{(n+2)a^2} - \frac{b(ax+b)^{n+1}}{(n+1)a^2}$ \\
+  $\int (ax^p+b)^n x^{p-1} \dx$ & $\frac{(ax^p+b)^{n+1}}{ap(n+1)}$ \\
+  $\int (ax^p + b)^{-1} x^{p-1} \dx$ & $\frac{1}{ap} \ln |ax^p + b|$ \\
+  $\int \frac{ax+b}{cx+d} \dx$ & $\frac{ax}{c} - \frac{ad-bc}{c^2} \ln |cx +d|$ \\
+  $\int \frac{1}{x^2+a^2} \dx$ & $\frac{1}{a} \arctan \frac{x}{a}$ \\
+  $\int \frac{1}{x^2 - a^2} \dx$ & $\frac{1}{2a} \ln\left| \frac{x-a}{x+a} \right|$ \\
+  $\int \sqrt{a^2+x^2} \dx $ & $\frac{x}{2}f(x) + \frac{a^2}{2}\ln(x+f(x))$ \\
+
+   
+%here   
+   
+   
+  $\int \frac{1}{(x+a)^2}dx$& $-\frac{1}{a+x}$ \\
+$\int \frac{1}{(x+a)^3}dx$& $-\frac{1}{2(a+x)^2}$ \\
+$\int \frac{1}{(x+a)^t}dx$& $\frac{1}{(1-t)(x+a)^{t+1}}$ \\
+$\int \frac{x}{(x+a)^2}dx$& $\frac{a}{a+x}+\log |a+x|$ \\
+$\int \frac{x}{(x+a)^3}dx$& $-\frac{a+2x}{2(a+x)^2}$ \\
+$\int \frac{1}{ax^2+bx+c}dx$& $\frac{2 \arctan\left(\frac{2ax+b}{\sqrt{4ac-b^2}} \right)}{\sqrt{4ac-b^2}}$\\
+
+  $\int \sin(kx)\cdot \cos(kx)dx$ & $-\frac{1}{4k}\cos(2kx)=\frac{-(\cos(x))^2}{2}$\\
+  
+
+
+ $\int \cos^n(x) d x$ & $\frac{n-1}{n} \int \cos^{n-2}(x) d x+\frac{\cos^{n-1}(x) \sin (x)}{n}$ \\
+$ \int \sin^n(x) d x $ & $\frac{n-1}{n} \int \sin ^{n-2}(x) d x-\frac{\cos (x) \sin ^{n-1}(x)}{n}$\\
+
+
+$\int \sin \cos dx$ & $\frac{-1}{2}\cos^2$\\
+  $\int \frac{\cos}{ \sin} dx$ & $\log(\cos(x))$\\
+  
+  \bottomrule
+ \end{tabularx}
+\end{center}
+\mysubsection{\centering Aufgabe 1}
+ Seien $U_1, U_2, U_3$ i.i.d. $\operatorname{Uni}([0,1])$ Zufallsvariablen. Wir definieren $L=\min \left(U_1, U_2, U_3\right)$ und $M=\max \left(U_1, U_2, U_3\right)$.\\
+ 
+ Berechne die Wahrscheinlichkeitsdichte von $M$.
+ 
+ $$
+F_M(m)=\mathbb{P}\left[U_1 \leq m, U_2 \leq m, U_3 \leq m\right]=\Pi_{i=1}^3 \mathbb{P}\left[U_i \leq m\right]= \begin{cases}1 & m \geq 1 \\ m^3 & 0 \leq m \leq 1 \\ 0 & \text { sonst }\end{cases}
+$$
+
+Berechne die gemeinsame Wahrscheinlichkeitsdichte von $L$ und $M$.
+
+$$
+\begin{aligned}
+&\begin{aligned}
+&P[M<m, L \leq l]\\
+= & P[M<m]-P[M<m, L>l] \\
+& =m^3-P\left[l<U_1<m, l<U_2<m, l<U_3<m\right] \\
+& =m^3-\left(P\left[l<U_1<m\right]\right)^3=m^3-(m-l)^3 
+\\
+&\text { für } 0 \leq l \leq m \leq 1
+\end{aligned}\\
+&\text { So } f_{M, L}(m, L)=6(m-l) \mathbb{1}_{\{0 \leq l \leq m \leq 1\}} \text {. }
+\end{aligned}
+$$
+
+Generell gilt:
+$$
+F_{\operatorname{Max}(X, Y)}(z)=P(X \leq z) \cdot P(Y \leq z)=F_X(z) \cdot F_Y(z)
+$$
+
+Oder
+
+$$
+F_{\operatorname{Min}(X, Y)}(z)=P(X \leq z)+P(Y \leq z)-P(X \leq z, Y \leq z)
+$$
+
+und dann
+
+$$
+f_{\operatorname{Max}(X, Y)}(z)=\frac{d}{d z} F_{\operatorname{Max}(X, Y)}(z)
+$$
+
+
+
+

@@ -1,0 +1,142 @@
+
+
+\mysection[col6]{\centering Statistik}
+
+\DEF{7.2. (Schätzer) }{ 
+  Ein Schätzer ist eine Zufallsvariable der Form
+ $$
+ T_{\ell}=t_{\ell}\left(X_{1}, \ldots, X_{n}\right)
+ $$
+ Die Schätzfunktionen $t_{\ell}: \mathbb{R}^{n} \rightarrow \mathbb{R}$ müssen noch gewählt/gefunden werden.
+ Einsetzen von Daten $x_{k}=X_{k}(\omega), k=1, \ldots, n$, liefert dann Schätzwerte $T_{\ell}(\omega)=t_{\ell}\left(x_{1}, \ldots, x_{n}\right)$ für $\vartheta_{\ell}, \ell=1, \ldots, m$.
+ Der Kürze halber schreiben wir oft auch $T=\left(T_{1}, \ldots, T_{m}\right)$ und $\vartheta=\left(\vartheta_{1}, \ldots, \vartheta_{m}\right)$.}
+
+\NOTE{Fehler}{Die Entscheidung bei einem Test kann auf zwei verschiedene Arten falsch herauskommen:
+\begin{itemize}[leftmargin=*]
+
+
+\item Fehler 1. Art: die Hypothese wird abgelehnt, obwohl sie richtig ist. Das passiert für $\vartheta \in \Theta_0$ und $T \in K$. $\mathbb{P}_{\vartheta}[T \in K]$ heisst für $\vartheta \in \Theta_0$ die Wahrscheinlichkeit für einen Fehler 1. Art.
+\item Fehler 2. Art: die Hypothese wird angenommen, obwohl sie falsch ist. Das passiert für $\vartheta \in \Theta_A$ und $T \notin K$. $\mathbb{P}_{\vartheta}[T \notin K]=1-\mathbb{P}_{\vartheta}[T \in K]$ heisst für $\vartheta \in \Theta_A$ die Wahrscheinlichkeit für einen Fehler 2. Art.
+
+\end{itemize}} 
+ 
+ \DEF{ 7.5. (Erwartungstreue)}{
+ Ein Schätzer $T$ heisst erwartungstreu für $\vartheta$, falls für alle $\vartheta \in \Theta$ gilt
+ $$
+ \mathbb{E}_{\vartheta}[T]=\vartheta
+ $$}
+ 
+ \DEF{7.6. (Bias und MSE) }{
+  Sei $\vartheta \in \Theta$ und $T$ ein Schätzer.
+Der Bias (oder erwartete Schätzfehler) von $T$ im Modell $\mathbb{P}_{\vartheta}$ ist definiert als
+ $$
+ \mathbb{E}_{\vartheta}[T]-\vartheta
+ $$
+ Erwartungstreu bedeutet also, dass der Bias gleich Null ist.
+ Der mittlere quadratische Schätzfehler von $T$ im Modell $\mathbb{P}_{\vartheta}$ ist definiert als
+ $$
+\operatorname{MSE}_{\vartheta}[T]=\mathbb{E}_{\vartheta}\left[(T-\vartheta)^{2}\right]
+$$
+}
+
+\NOTE{MSE}{
+Man kann den MSE in folgender Form zerlegen.
+\begin{align*}
+\operatorname{MSE}_\theta[T]=\operatorname{Var}_\theta[T]+\left(\mathbb{E}_\theta[T]-\theta\right)^2
+\end{align*}
+}
+
+\DEF{Konsistenz}{
+Eine Folge von Schätzern $T^{(n)}, n \in \mathbb{N}$, heisst \COL{konsistent} für $\vartheta$, falls $T^{(n)}$ für $n \rightarrow \infty$ in $\mathbb{P}_{\vartheta}$-Wahrscheinlichkeit gegen $\vartheta$ konvergiert, d.h. für jedes $\vartheta \in \Theta$ und jedes $\varepsilon>0$ gilt
+$$
+\lim _{n \rightarrow \infty} \mathbb{P}_{\vartheta}\left[\left|T^{(n)}-\vartheta\right|>\varepsilon\right]=0
+$$}
+
+\DEF{7.9. (Likelihood-Funktion) }{
+ Die Likelihood-Funktion ist
+ $$
+ L\left(x_{1}, \ldots, x_{n} ; \vartheta\right)= \begin{cases}p_{\vec{x}}\left(x_{1}, \ldots, x_{n} ; \vartheta\right) & \text { diskret } \\ f_{\vec{x}}\left(x_{1}, \ldots, x_{n} ; \vartheta\right) & \text { stetig }\end{cases}
+ $$
+ Die Funktion $\log L\left(x_{1}, \ldots, x_{n} ; \vartheta\right)$ heisst $\log$-Likelihood-Funktion und hat im i.i.d.-Fall den Vorteil durch eine Summe gegeben zu sein.}
+ 
+ \DEF{7.10. (ML-Schätzer)}{
+   Der Maximum-Likelihood-Schätzer $T_{\mathrm{ML}}$ für $\vartheta$ wird dadurch definiert, dass er die Funktion
+ $$
+ \vartheta \mapsto L\left(X_{1}, \ldots, X_{n} ; \vartheta\right)
+ $$
+ über alle $\vartheta$ maximiert, d.h.
+ $$
+ T_{\mathrm{ML}}=t_{\mathrm{TM}}\left(X_{1}, \ldots, X_{n}\right) \in \underset{\vartheta \in \Theta}{\arg \max } L\left(X_{1}, \ldots, X_{n} ; \vartheta\right)
+ $$}
+ 
+\KRZ{Log-MLE}{
+ Gegeben seien $X_1 \ldots X_n$ unter $P_\theta$ i.i.d. Für ein fixes $n$ gilt: (falls $n$ bekannt, gleich einsetzen)
+ \begin{enumerate}[leftmargin=*]
+   \item Gemeinsame Dichte finden $g\left(x_1, \ldots, x_n ;\right)=\prod_{i=1}^n \mathbb{P}\left[X_i=x_i\right]$
+   \item Bestimme $f(\theta) = \log \left(L\left(x_1, \ldots, x_n ; \theta\right)\right)$ ($\theta$ einsetzen für respective Variable in allen Verteilungen)
+   \item Maximum von $f(\theta)$ finden ($f(\theta)^{\prime}=0$ und $f(\theta)^{\prime\prime}<0$, Ränder Überprüfen)
+ \end{enumerate}
+ 
+ 
+ }
+ 
+ \KRZ{Erwartungstreue eines Schätzers}{
+ Berechne $\mathbb{E}_{\lambda}[T] - \lambda$. Falls $0$, dann ist Schätzer Erwartungstreu. Da $X_i$ i.i.d sind kann man Linearität des Erwargungswertes anwenden.
+ }
+ 
+  \KRZ{Konsistenz eines Schätzers}{
+  Benutze Chebyshev
+  
+  $$
+\mathbb{P}_p\left[\left|T_n-\lambda \right|>\varepsilon\right] \leq \frac{\operatorname{Var}\left(T_n\right)}{\varepsilon^2}
+$$
+Varianz des Schätzers durch Proposition 4.46 ausrechenbar, da i.i.d. 
+
+Falls $\lim n \to \infty \frac{\operatorname{Var}\left(T_n\right)}{\varepsilon^2} =0$ dann konsistent 
+ }
+ 
+ \NOTE{MLE-Schätzer}{
+ \begin{itemize}[leftmargin=*]
+ 
+\item $X_1, \ldots, X_n \sim \operatorname{Ber}(\theta)$ iid.: $T=\frac{1}{n} \sum_{i=1}^{n}X_i$
+ \item $X_1, \ldots, X_n \sim \operatorname{Exp}(\theta)$ iid.: $T=\frac{\sum_{i=1}^n X_i}{n}=\bar{X}_n$
+ \item $X_1, \ldots, X_n \sim \operatorname{Geo}(\theta)$ iid.: $T=\frac{n}{\sum_{i=1}^n X_i}=\frac{1}{\bar{X}_n}$
+\item $X_1, \ldots, X_n \sim \operatorname{Bin}(N, \theta)$ iid.: $T=\frac{1}{N} \frac{\sum_{i=1}^n X_i}{n}$
+\item $X_1, \ldots, X_n \sim Poi(\theta)$ iid.: $T=\frac{\sum_{i=1}^n X_i}{n}=\bar{X}_n$
+\item $X_1, \ldots, X_n \sim \mathcal{U}\left(\left[\theta_1, \theta_2\right]\right)$ iid.: $T_{\theta_1}=\max \left(X_i\right), T_{\theta_2}=\min \left(X_i\right)$
+\item $X_1, \ldots, X_n \sim \mathcal{N}\left(\theta_1, \theta_2\right)$ iid. : $T_{\theta_1}=\bar{X}_n, T_{\theta_2}=S^2$
+
+  \end{itemize}
+ 
+ 
+ }
+
+\DEF{7.18. (Studentsche $t$-Verteilung)}{
+  Eine stetige Zufallsvariable $X$ heisst $t$-verteilt mit $m$ Freiheitsgraden falls ihre Dichte für $x \in \mathbb{R}$ gegeben ist durch
+ $$
+f_{X}(x)=\frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m \pi} \Gamma\left(\frac{m}{2}\right)}\left(1+\frac{x^{2}}{m}\right)^{-\frac{m+1}{2}}
+ $$
+ Wir schreiben dann $X \sim t_{m}$.}
+ 
+ \SA{7.20.}{
+ 
+   Seien $X_{1}, \ldots, X_{n}$ i.i.d. $\sim \mathcal{N}\left(\mu, \sigma^{2}\right)$, und
+ $$
+ \bar{X}_{n}=\frac{1}{n}\sum_{k=1}^{n} X_{k}, \quad S^{2}=\frac{1}{n-1} \sum_{k=1}^{n}\left(X_{k}-\bar{X}_{n}\right)^{2}
+ $$
+ Es gelten folgende Aussagen:
+ \begin{enumerate}[leftmargin=*]
+ 
+
+ \item $\bar{X}_{n} \sim \mathcal{N}\left(\mu, \frac{1}{n} \sigma^{2}\right)$, also $\frac{\bar{X}_{n}-\mu}{\frac{\sigma}{\sqrt{n}}} \sim \mathcal{N}(0,1)$.
+ 
+\item  $\frac{n-1}{\sigma^{2}} S^{2}=\frac{1}{\sigma^{2}} \sum_{k=1}^{n}\left(X_{k}-\bar{X}_{n}\right)^{2} \sim \chi_{n-1}^{2}$.
+ 
+ \item $\bar{X}_{n}$ und $S^{2}$ sind unabhängig.
+ 
+ \item $\frac{\bar{X}_{n}-\mu}{\frac{S}{\sqrt{n}}}=\frac{\frac{\bar{X}_{n}-\mu}{\sigma / \sqrt{n}}}{S / \sigma}=\frac{\frac{\bar{X}_{n}-\mu}{\sigma / \sqrt{n}}}{\sqrt{\frac{1}{n-1} \frac{n-1}{\sigma^{2}} S^{2}}} \sim t_{n-1}$.}
+ \end{enumerate}
+
+
+
+

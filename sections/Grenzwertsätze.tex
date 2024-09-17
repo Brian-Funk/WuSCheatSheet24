@@ -1,0 +1,90 @@
+
+
+
+\mysection[col7]{\centering Grenzwertsätze}
+
+
+\SA{6.2. (Schwaches Gesetz der grossen Zahlen) }{
+Sei $X_{1}, X_{2}, \ldots$ eine Folge von unabhängigen Zufallsvariablen mit gleichen Erwartungswerten $\mathbb{E}\left[X_{k}\right]=\mu$ und Varianzen $\mathbb{V}\left[X_{k}\right]=\sigma^{2}$. Sei
+ 
+ $$\bar{X}_{n}=\frac{1}{n} S_{n}=\frac{1}{n} \sum_{k=1}^{n} X_{k}$$
+ Dann konvergiert $\bar{X}_{n}$ für $n \rightarrow \infty$ in Wahrscheinlichkeit gegen $\mu=\mathbb{E}\left[X_{k}\right]$, d.h. für jedes $\varepsilon>0$ gilt
+$$\mathbb{P}\left[\left|\bar{X}_{n}-\mu\right|\varepsilon\right] \xrightarrow{n \rightarrow \infty} 0$$}
+ 
+ \NOTE{}{
+\begin{itemize}[leftmargin=*]
+ \item  $X_i, X_j$ unkorreliert $\Leftrightarrow \operatorname{Cov}\left(X_i, X_j\right)=0$
+ 
+ \item $X_i, X_j$ unabhängig $\Longrightarrow X_i, X_j$ unkorreliert
+\end{itemize}}
+ 
+ \SA{6.5. (Starkes Gesetz der grossen Zahlen)}{
+   Sei $X_{1}, X_{2}, \ldots$ eine Folge von unabhängigen Zufallsvariablen, die alle dieselbe Verteilung haben mit endlichem Erwartungswert $\mathbb{E}\left[X_{k}\right]$. Für
+ $$
+ \bar{X}_{n}=\frac{1}{n} S_{n}=\frac{1}{n} \sum_{k=1}^{n} X_{k}
+$$
+ gilt dann
+ $$
+ \bar{X}_{n} \xrightarrow{n \rightarrow \infty} \mu \quad \mathbb{P} \text {-fast sicher, }
+ $$
+ das bedeutet,
+ 
+ $$
+ \mathbb{P}\left[\left\{\omega \in \Omega \mid \bar{X}_{n}(\omega) \xrightarrow{n \rightarrow \infty} \mu\right\}\right]=1 .
+ $$}
+ 
+ \DEF{6.7. (Konvergenz in Verteilung)}{
+   Seien $\left(X_{n}\right)_{n \in \mathbb{N}}$ und $X$ Zufallsvariablen mit Verteilungsfunktionen $\left(F_{n}\right)_{n \in \mathbb{N}}$ und $F$. Wir sagen $\left(X_{n}\right)_{n \in \mathbb{N}}$ konvergiert in Verteilung gegen $X$ und schreiben
+ $$
+ X_{n} \xrightarrow{d} X \text { für } n \rightarrow \infty
+ $$
+ falls für jeden Stetigkeitspunkt $x \in \mathbb{R}$ von $F$ gilt,
+ $$
+ \lim _{n \rightarrow \infty} F_{n}(x)=\lim _{n \rightarrow \infty} \mathbb{P}\left[X_{n} \leq x\right]=\mathbb{P}[X \leq x]=F(x)
+ $$
+  
+ In der Literatur findet man unter anderem folgende Notation,
+ $$
+ X_{n} \xrightarrow{w} X \text { und } \quad X_{n} \xrightarrow{L} X .
+ $$
+ Die Buchstaben $d, w, L$ stehen dabei für "convergence in distribution", "weak convergence", bzw. "convergence in law".}
+ 
+ \SA{6.10. (zentraler Grenzwertsatz, ZGS) }{
+  Sei $\left(X_{k}\right)_{k \in \mathbb{N}}$ eine Folge von i.i.d. Zufallsvariablen mit $\mathbb{E}\left[X_{k}\right]=\mu$ und $\mathbb{V}\left[X_{k}\right]=\sigma^{2}$. Für die Partialsummen $S_{n}=\sum_{k=1}^{n} X_{k}$ gilt dann für alle $x \in \mathbb{R}$,
+ $$
+ \lim _{n \rightarrow \infty} \mathbb{P}\left[\frac{S_{n}-n \mu}{\sigma \sqrt{n}} \leq x\right]=\Phi(x)
+ $$
+ wobei $\Phi$ die Verteilungsfunktion der $\mathcal{N}(0,1)$-Verteilung ist.
+und somit 
+$\frac{\frac{1}{n} S_n-\mu}{\frac{\sigma}{\sqrt{n}}}= \frac{S_n-n \mu}{\sigma \sqrt{n}} \xrightarrow{d} \mathcal{N}(0,1)$ 
+ 
+ 
+ }
+ 
+ 
+ \DEF{6.16. (Momenterzeugende Funktion) }{ 
+  Die momenterzeugende Funktion einer Zufallsvariablen $X$ ist für $t \in \mathbb{R}$ definiert durch
+ $$
+ M_{X}(t)=\mathbb{E}\left[e^{t X}\right] \overset{\underset{\mathrm{S4.18}}{}}{=} \int_{-\infty}^{\infty} e^{tx} f_{X}(x)dx
+ $$}
+ 
+ 
+ \SA{6.19. (Chernoff-Ungleichung)}{
+ Seien $X_{1}, \ldots, X_{n}$ i.i.d. Zufallsvariablen, für welche die momenterzeugende Funktion $M_{X}(t)$ für alle $t \in \mathbb{R}$ endlich ist. Für jedes $b \in \mathbb{R}$ gilt dann
+ $$ 
+ \mathbb{P}\left[S_{n} \geq b\right] \leq \exp \left(\inf _{t \in \mathbb{R}}\left(n \log M_{X}(t)-t b\right)\right)
+ 
+$$}
+
+\SA{6.20. (Chernoff-Schranke)}{
+   Seien $X_{1}, \ldots, X_{n}$ unabhängig mit $X_{k} \sim \operatorname{Ber}\left(p_{k}\right)$ und sei $S_{n}=\sum_{k=1}^{n} X_{k}$. Sei $\mu_{n}=\mathbb{E}\left[S_{n}\right]=\sum_{k=1}^{n} p_{k}$ und $\delta>0$, dann gilt
+ 
+   
+ 
+ $$
+ \mathbb{P}\left[S_{n} \geq(1+\delta) \mu_{n}\right] \leq\left(\frac{e^{\delta}}{(1+\delta)^{1+\delta}}\right)^{\mu_{n}}
+$$}
+
+
+
+

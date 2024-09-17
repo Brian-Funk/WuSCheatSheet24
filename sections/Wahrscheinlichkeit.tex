@@ -1,0 +1,113 @@
+
+
+
+\mysection[col1]{\centering Wahrscheinlichkeit}
+
+
+\mysubsection{\centering Grundbegriffe}
+
+
+\DEF{1.2 - Grundraum}{ Der Ereignisraum oder Grundraum (sample space) $\Omega \neq \emptyset$ ist die Menge aller möglichen Ergebnisse des betrachteten Zufallsexperiments. Die Elemente $\omega \in \Omega$ heissen Elementarereignisse oder Ausgänge des Experiments (outcomes).}
+
+\DEF{1.4 - Potenzmenge und Ereignisse}{Die Potenzmenge (power set) von $\Omega, \mathcal{P}(\Omega)$ oder $2^{\Omega}$, ist die Menge aller Teilmengen von $\Omega$.
+ Ein prinzipielles Ereignis (event) ist eine Teilmenge $\mathcal{A} \subseteq \Omega$, also eine Kollektion von Elementarereignissen.
+Die Klasse aller (beobachtbaren) Ereignisse bezeichnen wir mit $\mathcal{F}$. Das ist eine Teilmenge der Potenzmenge von $\Omega$.}
+
+\NOTE{Berechnungen}{
+Es gilt immer
+$\mathbb{P}[A\cup B]=\mathbb{P}[A]+\mathbb{P}[B]-\mathbb{P}[A \cap B]$ (Siebformel)
+
+
+}
+
+\DEF{1.5 -$\sigma$-Algebra }{  Ein Mengensystem $\mathcal{F} \subseteq \mathcal{P}(\Omega)$ nennt man eine $\sigma$-Algebra (manchmal $\sigma$-field), wenn
+\begin{enumerate}[leftmargin=*]
+\item $\Omega \in \mathcal{F}$,
+\item für jedes $A \in \mathcal{F}$ auch das Komplement $A^{\complement} \in \mathcal{F}$ ist,
+\item für jede Folge $\left(A_n\right)_{n \in \mathbb{N}}$ mit $A_n \in \mathcal{F}, n \in \mathbb{N}$, auch die Vereinigung $\cup_{n \in \mathbb{N}} A_n \in \mathcal{F}$ ist.
+\end{enumerate}
+}
+
+\DEF{1.9. (Wahrscheinlichkeitsmass)}{
+Sei $\Omega$ ein Grundraum und sei $\mathcal{F}$ eine $\sigma$-Algebra. Eine Abbildung $$
+\mathbb{P}: \mathcal{F} \rightarrow[0,1], \text { mit } A \mapsto \mathbb{P}[A]$$
+heisst Wahrscheinlichkeitsmass (probability measure) auf $(\Omega, \mathcal{F})$, wenn die folgenden Axiome erfüllt sind,
+ \begin{enumerate}
+\item Normiertheit: $\mathbb{P}[\Omega]=1$,
+
+\item $\sigma$-Additivität: $\mathbb{P}\left[\cup_{n \in \mathbb{N}} A_n\right]=\sum_{n=1}^{\infty} \mathbb{P}\left[A_n\right]$ für paarweise disjunkte Mengen $A_n$, d.h. $A_n \cap A_m=\emptyset$ für alle $n \neq m$.
+\end{enumerate} }
+
+\PROP{1.10}{
+Für ein Wahrscheinlichkeitsmass $\mathbb{P}$ auf $(\Omega, \mathcal{F})$ und Mengen $A, B \in \mathcal{F}$ gelten folgende Aussagen:
+\begin{enumerate}[leftmargin=*]
+\item $\mathbb{P}\left[A^{\complement}\right]=1-\mathbb{P}[A]$, und insbesondere $\mathbb{P}[\emptyset]=0$.
+\item Monotonie: wenn $A \subseteq B$, dann $\mathbb{P}[A] \leq \mathbb{P}[B]$,
+\item Additionsregel: $\mathbb{P}[A]+\mathbb{P}[B]=\mathbb{P}[A \cup B]-\mathbb{P}[A \cap B]$}
+\end{enumerate}
+
+\DEF{Definition 1.12. (Wahrscheinlichkeitsraum)}{Sei $\Omega$ ein Grundraum, $\mathcal{F}$ eine $\sigma$-Algebra und $\mathbb{P}$ ein Wahrscheinlichkeitsmass auf $(\Omega, \mathcal{F})$. Das Tripel $(\Omega, \mathcal{F}, \mathbb{P})$ heisst Wahrscheinlichkeitsraum.}
+
+
+\DEF{1.14. (Laplace Modell) }{
+ Sei $\Omega=\left\{\omega_1, \ldots, \omega_N\right\}$ mit $|\Omega|=N$ ein endlicher Grundraum. $(\Omega, \mathcal{F}, \mathbb{P}$ ) heisst Laplace Modell auf $\Omega$, wenn 
+\begin{itemize}[leftmargin=*]
+
+\item $\mathcal{F}=\mathcal{P}(\Omega)$
+\item $\mathbb{P}$ ist die diskrete Gleichverteilung auf $\Omega$, d.h. alle Elementarereignisse sind gleich wahrscheinlich, $p_1=p_2=\ldots=p_N=\frac{1}{N}$. Insbesondere gilt für beliebige $A \subseteq \Omega$ 
+\end{itemize}
+$$
+\mathbb{P}[A]=\frac{|A|}{|\Omega|}=\frac{\text { Anzahl Elementarereignisse in } A}{\text { Anzahl Elementarereignisse in } \Omega} .
+$$
+}
+
+\DEF{1.22. (Bedingte Wahrscheinlichkeit) }{ 
+ Sei $(\Omega, \mathcal{F}, \mathbb{P})$ ein Wahrscheinlichkeitsraum. Seien $A, B$ zwei Ereignisse mit ${\color{#ed91e6} \mathbb{P}[B]>0}$. Wir definieren die bedingte Wahrscheinlichkeit von A gegeben $B$ (conditional probability) (d.h. unter der Bedingung, dass $B$ eintritt) wie folgt,
+  $$\mathbb{P}[A \mid B]:=\frac{\mathbb{P}[A \cap B]}{\mathbb{P}[B]}$$}
+  
+  \SA{1.25. }{
+Sei $(\Omega, \mathcal{F}, \mathbb{P})$ ein Wahrscheinlichkeitsraum. Sei $B$ ein Ereignis mit positiver Wahrscheinlichkeit. Dann ist $\mathbb{P}^*: \mathcal{F} \rightarrow[0,1]$ definiert durch $$
+A \mapsto \mathbb{P}^{*}[A]:=\mathbb{P}[A \mid B]$$
+wieder ein Wahrscheinlichkeitsmass auf $(\Omega, \mathcal{F})$.}
+
+\SA{ 1.29. (Satz von der totalen Wahrscheinlichkeit) }{Sei $B_1, \ldots, B_N$ mit $\mathbb{P}\left[B_n\right]>0$ für jedes $1 \leq n \leq N$ eine Partition des Grundraums $\Omega$, d.h. $\bigcup_{n=1}^N B_n=\Omega$ mit $B_n \cap B_m=\emptyset$ für $n \neq m$. Dann gilt für alle $A \in \mathcal{F}$,
+$$\mathbb{P}[A]=\sum_{n=1}^N \mathbb{P}\left[A \mid B_n\right] \mathbb{P}\left[B_n\right]$$
+Das bedeutet insbesondere
+$$\mathbb{P}[B] = \mathbb{P}[B\mid A]\cdot \mathbb{P}[A]+ \mathbb{P}[B\mid A^{\complement}]\cdot \mathbb{P}[A^{\complement}]$$
+}
+
+
+\SA{1.32. (Satz von Bayes) }{
+ Sei $B_1, \ldots, B_N \in \mathcal{F}$ eine Partition von $\Omega$ mit $\mathbb{P}\left[B_n\right]>0$ für alle $n$. Für jedes Ereignis $A$ mit $\mathbb{P}[A]>0$ und jedes $n \in\{1, \ldots, N\}$ gilt
+$$
+\mathbb{P}\left[B_n \mid A\right]=\frac{\mathbb{P}\left[A \mid B_n\right] \mathbb{P}\left[B_n\right]}{\sum_{k=1}^N \mathbb{P}\left[A \mid B_k\right] \mathbb{P}\left[B_k\right]} .$$}
+
+\mysubsection{\centering Unabhängigkeit}
+
+
+\DEF{1.35. (Unabhängigkeit zweier Ereignisse) }{
+Sei $(\Omega, \mathcal{F}, \mathbb{P})$ ein Wahrscheinlichkeitsraum. Zwei Ereignisse $A$ und $B$ heissen (stochastisch) unabhängig, falls
+ $$
+ \mathbb{P}[A \cap B]=\mathbb{P}[A] \mathbb{P}[B]$$}
+ 
+\PROP{ Proposition 1.37.}{
+  Seien $A, B \in \mathcal{F}$ zwei Ereignisse mit $\mathbb{P}[A], \mathbb{P}[B]>0$ Dann sind die folgenden Aussagen äquivalent:
+  \begin{enumerate}[leftmargin=*]
+\item $\mathbb{P}[A \cap B]=\mathbb{P}[A] \mathbb{P}[B], A$ und $B$ sind unabhängig,
+\item $\mathbb{P}[A \mid B]=\mathbb{P}[A]$, Eintreten von $B$ hat keinen Einfluss auf $A$,
+\item $\mathbb{P}[B \mid A]=\mathbb{P}[B]$, Eintreten von $A$ hat keinen Einfluss auf $B$.}
+  \end{enumerate}
+  
+\DEF{1.40. (Unabhängigkeit) }{ 
+Sei I eine beliebige Indexmenge. Eine Familie von Ereignissen $\left(A_i\right)_{i \in I}$ heisst (stochastisch) unabhängig, wenn für alle endlichen Teilmengen $J \subset I$ gilt: $\mathbb{P}\left[\bigcap_{j \in J} A_j\right]=\prod_{j \in J} \mathbb{P}\left[A_j\right]$.} 
+
+
+\NOTE{}{
+\begin{enumerate}[leftmargin=*]
+\item $\mathbb{P}(A) \in\{0,1\} \Longrightarrow A$ zu jedem Ereignis unabhängig 
+\item $A$ zu sich selbst unabhängig $\Longrightarrow \mathbb{P}(A) \in\{0,1\}$ 
+\item $A, B$ unabhängig $\Longrightarrow A, B^{\mathrm{C}}$ unabhängig
+\item $\mathbb{P}[B\mid A^{\complement}]= 1 - \mathbb{P}[B^{\complement}\mid A^{\complement}]$
+\end{enumerate}
+
+} 
